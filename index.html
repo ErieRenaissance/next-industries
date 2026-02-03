@@ -1,98 +1,1270 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Welcome to NIMCo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Industries | Automated Precision Manufacturing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --border: #2a2a2a;
+            --grid-line: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #C0C0C0;
-            color: #000080;
-            font-family: "Times New Roman", serif;
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 2;
+            padding: 8rem 3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            border-radius: 2px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: var(--bg-secondary);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .machine-diagram {
+            width: 100%;
+            aspect-ratio: 1;
+            position: relative;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            overflow: hidden;
+        }
+
+        .machine-diagram::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60%;
+            height: 60%;
+            transform: translate(-50%, -50%);
+            border: 1px dashed var(--border);
+        }
+
+        .machine-diagram::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30%;
+            height: 30%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border: 1px solid var(--accent-dim);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .coord-lines {
+            position: absolute;
+            inset: 0;
+        }
+
+        .coord-lines span {
+            position: absolute;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+        }
+
+        .coord-lines .x { bottom: 1rem; left: 50%; transform: translateX(-50%); }
+        .coord-lines .y { left: 1rem; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+        .coord-lines .z { top: 1rem; right: 1rem; }
+
+        .crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+        }
+
+        .crosshair::before,
+        .crosshair::after {
+            content: '';
+            position: absolute;
+            background: var(--accent);
+        }
+
+        .crosshair::before {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+        }
+
+        .crosshair::after {
+            width: 1px;
+            height: 100%;
+            left: 50%;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .stat {
+            background: var(--bg-secondary);
+            padding: 2rem;
             text-align: center;
         }
-        table {
-            width: 80%;
-            margin: 0 auto;
-            background-color: #FFFFFF;
-            border: 2px solid #000080;
+
+        .stat-value {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
-        h1 {
-            font-size: 36px;
-            background-color: #000080;
-            color: white;
-            padding: 10px;
+
+        .stat-value span {
+            color: var(--accent);
         }
-        h2 {
-            font-size: 24px;
-            color: #000080;
-            border-bottom: 1px dashed #000080;
+
+        .stat-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
         }
-        .content {
-            padding: 20px;
-            text-align: left;
+
+        /* Problem Section */
+        .problem {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
-        marquee {
-            color: red;
-            font-weight: bold;
+
+        .section-header {
+            margin-bottom: 4rem;
         }
-        .footer {
-            font-size: 12px;
-            color: gray;
-            padding: 10px;
+
+        .section-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .problem-card {
+            padding: 2.5rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+
+        .problem-card:hover {
+            border-color: var(--accent-dim);
+        }
+
+        .problem-card::before {
+            content: attr(data-num);
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-family: 'Instrument Serif', serif;
+            font-size: 3rem;
+            color: var(--bg-tertiary);
+            line-height: 1;
+        }
+
+        .problem-card h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .problem-card p {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        /* Solution Section */
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .solution-text {
+            position: sticky;
+            top: 8rem;
+        }
+
+        .solution-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            border-color: var(--accent-dim);
+            transform: translateX(4px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            color: var(--accent);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-content p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Market Section */
+        .market {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .market-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .tam-display {
+            text-align: center;
+            padding: 3rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .tam-display::before {
+            content: 'WEDGE TAM';
+            position: absolute;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .tam-value {
+            font-family: 'Instrument Serif', serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--accent);
+            margin-top: 2rem;
+        }
+
+        .tam-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .tam-sublabel {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .market-segments {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .segment {
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+        }
+
+        .segment-value {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .segment-name {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .segment-bar {
+            height: 3px;
+            background: var(--border);
+            margin-top: 1rem;
+        }
+
+        .segment-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.6s ease;
+        }
+
+        /* Investment Section */
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .phase-card {
+            padding: 2.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card.featured {
+            border-color: var(--accent-dim);
+            background: linear-gradient(135deg, var(--bg-secondary), var(--accent-glow));
+        }
+
+        .phase-card.featured::before {
+            content: 'CURRENT RAISE';
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-size: 0.55rem;
+            padding: 0.25rem 2.5rem;
+            transform: rotate(45deg);
+            letter-spacing: 0.1em;
+        }
+
+        .phase-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-amount {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-card.featured .phase-amount {
+            color: var(--accent);
+        }
+
+        .phase-details {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .phase-details li {
+            padding: 0.5rem 0;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phase-details li::before {
+            content: '→';
+            color: var(--accent);
+        }
+
+        /* Metrics Section */
+        .metrics {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .metric {
+            background: var(--bg-primary);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'Instrument Serif', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .metric-context {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Team Section */
+        .team-intro {
+            max-width: 600px;
+            margin-bottom: 4rem;
+        }
+
+        .team-intro p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .advantage {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .advantage h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .advantage p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 10rem 3rem;
+        }
+
+        .contact-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 1px solid var(--accent-dim);
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 2;
+            padding: 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+
+            .market-content {
+                grid-template-columns: 1fr;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
+    <div class="noise-overlay"></div>
 
-<marquee behavior="scroll" direction="left">WELCOME TO NEXT INDUSTRIAL MANUFACTURING COMPANY (NIMCO)</marquee>
+    <nav>
+        <div class="logo">Next<span>.</span>Industries</div>
+        <div class="nav-links">
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#market">Market</a>
+            <a href="#investment">Investment</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-<table>
-    <tr>
-        <td>
-            <h1>NIMCo - Next Industrial Manufacturing Company</h1>
-            <div class="content">
-
-                <h2>If It Still Looks Like This...</h2>
-                <p>
-                    Then we’re interested.
-                </p>
-                <p>
-                    At NIMCo, we invest in companies that have been overlooked by traditional capital — not because they’re failing, but because they’ve been quietly succeeding without fanfare. The outdated aesthetic of this website is a metaphor. It represents the kinds of businesses we target: essential, cash-flowing, and deeply capable — but undercapitalized, under-modernized, and structurally ignored.
-
-These companies aren’t found through pitch decks or VC demo days. They’re found in industrial parks, owner-operated shops, and balance sheets that reflect decades of grit. We see opportunity not in the flash, but in the fundamentals. If the homepage still has a marquee, a hit counter, or a “Contact Us” link that goes nowhere, we don’t see red flags. We see overlooked potential.
-                </p>
-                <p>
-                    These companies often form the backbone of American industry: profitable, reliable, and quietly essential. But they’ve been left behind by modern capital markets. They’re not flashy enough for venture capital, not big enough for private equity, and not flexible enough for traditional lending.
-                </p>
-                <p>
-                    That’s exactly why we focus on them.
-                </p>
-                <p>
-                    This website is intentionally outdated — not because we can’t build a better one, but because we want to prove a point: When capital ignores substance in favor of polish, someone needs to show up and look deeper. That’s NIMCo.
-                </p>
-
-                <h2>The American Manufacturing Gap: Hidden Potential in Plain Sight</h2>
-                <p>America's industrial backbone is at a critical juncture. While headlines focus on technology disruption and digital transformation, a fundamental gap exists in how capital serves the manufacturing sector. Thousands of profitable, well-established industrial businesses across the American heartland find themselves in a structural bind, neither failing nor flourishing, but rather trapped in a capital no-man's-land that prevents them from reaching their full potential despite forming the core of American supply chains.</p>
-
-                <h2>The NIMCo Solution: Permanent Capital with Operational Engagement</h2>
-                <p>NIMCo combines permanent capital, operating control, and strategic modernization, delivered through a model that blends characteristics of a holding company, REIT, and sovereign wealth fund. We are building a portfolio of durable, productive American companies and compounding value over time through thoughtful reinvestment and modernization.</p>
-                <p>By taking a long-term ownership approach and providing structured investor liquidity, we enable steady reinvestment, consistent yield, and compound value creation over time. Our model combines operational involvement with financial discipline, giving investors access to real cash flow and downside protection backed by productive assets.</p>
-
-                <h2>Contact</h2>
-                <p>Email: info@next.industries<br>
-                Address: America's Heartland</p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-tag">YC Spring 2026 Applicant</div>
+                    <h1>The factory as <em>software</em></h1>
+                    <p class="hero-description">
+                        We're building automated CNC machining facilities that convert CAD files into finished metal parts with minimal human intervention. Upload a design, receive precision parts in days—not weeks.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">
+                            Request Deck
+                            <span>→</span>
+                        </a>
+                        <a href="#solution" class="btn btn-secondary">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="machine-diagram">
+                        <div class="coord-lines">
+                            <span class="x">X-AXIS</span>
+                            <span class="y">Y-AXIS</span>
+                            <span class="z">Z: 0.0001"</span>
+                        </div>
+                        <div class="crosshair"></div>
+                    </div>
+                </div>
             </div>
-        </td>
-    </tr>
-</table>
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-value">5<span>-</span>day</div>
+                    <div class="stat-label">Standard Lead Time</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">65<span>%+</span></div>
+                    <div class="stat-label">Target Gross Margin</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">±0.001<span>"</span></div>
+                    <div class="stat-label">Precision Tolerance</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">80<span>%</span></div>
+                    <div class="stat-label">Automated Jobs</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="footer">
-    <p>If a company's website still looks like this... we see opportunity.</p>
-    <p>
-        <img src="https://raw.githubusercontent.com/ErieRenaissance/next-industries/89ca7ed3afb886fbad08e82382d7320512359286/NIMCo_Logo.png" width="200" alt="NIMCo Logo">
-    </p>
-    <p><a href="https://www.freecounterstat.com" title="free website hit counter"><img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=bnck4nwhz8s2ba4a8uczuga4dy7ubjxb" border="0" title="free website hit counter" alt="free website hit counter"></a></p>
-</div>
+    <section class="problem" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The Problem</div>
+                <h2 class="section-title">Precision manufacturing is broken</h2>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card" data-num="01">
+                    <h3>Regional Job Shops</h3>
+                    <p>4–8 week lead times. Aging workforce. No succession plans. Many are refusing new customers entirely.</p>
+                </div>
+                <div class="problem-card" data-num="02">
+                    <h3>Online Marketplaces</h3>
+                    <p>Route to the same overloaded shops. Quality variance. No true traceability. Premium pricing stacked on shop margins.</p>
+                </div>
+                <div class="problem-card" data-num="03">
+                    <h3>Overseas Manufacturing</h3>
+                    <p>3–5 week shipping. Communication friction. IP concerns. Customs delays. Tariff exposure. Minimum quantities.</p>
+                </div>
+                <div class="problem-card" data-num="04">
+                    <h3>In-House Shops</h3>
+                    <p>$500K+ capex. Can't find skilled machinists. Under 30% utilization. Doesn't scale with demand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Solution</div>
+                <h2 class="section-title">Software-controlled precision manufacturing</h2>
+            </div>
+            <div class="solution-content">
+                <div class="solution-text">
+                    <p>
+                        Modern 5-axis CNC machines, robotic part handling, and automated inspection equipment already exist. What's missing is the integration layer.
+                    </p>
+                    <p>
+                        We build the software and physical infrastructure that allows these components to run jobs continuously—without manual setup, tool changes, or part handling between operations.
+                    </p>
+                </div>
+                <div class="solution-features">
+                    <div class="feature">
+                        <div class="feature-icon">◎</div>
+                        <div class="feature-content">
+                            <h4>Instant Algorithmic Quoting</h4>
+                            <p>Upload CAD, receive price in seconds. No phone calls, no negotiations.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⬡</div>
+                        <div class="feature-content">
+                            <h4>Automated Process Planning</h4>
+                            <p>DFM checks, toolpath generation, and scheduling without human bottlenecks.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">◈</div>
+                        <div class="feature-content">
+                            <h4>Robotic Part Handling</h4>
+                            <p>Load/unload, fixture changes, and material transport run 24/7.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⬢</div>
+                        <div class="feature-content">
+                            <h4>Complete Digital Thread</h4>
+                            <p>Full traceability from CAD to shipped part. Every measurement recorded.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">◇</div>
+                        <div class="feature-content">
+                            <h4>Real-Time Transparency</h4>
+                            <p>Track your job from queue to delivery through our customer portal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="market" id="market">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Market Opportunity</div>
+                <h2 class="section-title">Underserved industrial corridor</h2>
+            </div>
+            <div class="market-content">
+                <div class="tam-display">
+                    <div class="tam-value">$69M</div>
+                    <div class="tam-label">Initial Wedge TAM</div>
+                    <div class="tam-sublabel">Western PA • Eastern OH • Western NY</div>
+                </div>
+                <div class="market-segments">
+                    <div class="segment">
+                        <div class="segment-value">$22.4M</div>
+                        <div class="segment-name">Automotive Tier 2/3</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 100%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$21M</div>
+                        <div class="segment-name">Industrial Equipment OEMs</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 94%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$12M</div>
+                        <div class="segment-name">Defense Contractors</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 54%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$6M</div>
+                        <div class="segment-name">Medical Device</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 27%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$4M</div>
+                        <div class="segment-name">Energy & Oil/Gas</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 18%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$3M</div>
+                        <div class="segment-name">Robotics & Automation</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 13%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="investment" id="investment">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Capital Plan</div>
+                <h2 class="section-title">Phased deployment with clear milestones</h2>
+            </div>
+            <div class="investment-grid">
+                <div class="phase-card featured">
+                    <div class="phase-label">Phase 1 — Pilot Facility</div>
+                    <div class="phase-amount">$2.4M</div>
+                    <ul class="phase-details">
+                        <li>15,000 sq ft facility</li>
+                        <li>6 CNC machining centers</li>
+                        <li>2 robotic load/unload cells</li>
+                        <li>Full metrology suite</li>
+                        <li>12 months to profitability target</li>
+                    </ul>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-label">Phase 2 — Expansion</div>
+                    <div class="phase-amount">$7M</div>
+                    <ul class="phase-details">
+                        <li>Second shift operations</li>
+                        <li>Turning capability added</li>
+                        <li>LMHV contract pursuit</li>
+                        <li>Material expansion</li>
+                        <li>Process refinement</li>
+                    </ul>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-label">Phase 3 — Replication</div>
+                    <div class="phase-amount">$22M</div>
+                    <ul class="phase-details">
+                        <li>Second facility buildout</li>
+                        <li>Network-level scheduling</li>
+                        <li>Playbook validation</li>
+                        <li>AS9100 certification</li>
+                        <li>Path to regional dominance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Phase 1 Targets</div>
+                <h2 class="section-title">Month 18 steady state metrics</h2>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">40-60</div>
+                    <div class="metric-label">Jobs Per Week</div>
+                    <div class="metric-context">Unique parts processed</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">$250K</div>
+                    <div class="metric-label">Monthly Revenue</div>
+                    <div class="metric-context">Target ceiling</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">85%+</div>
+                    <div class="metric-label">On-Time Delivery</div>
+                    <div class="metric-context">Industry-leading reliability</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">&lt;2%</div>
+                    <div class="metric-label">Defect Rate</div>
+                    <div class="metric-context">Customer rejections</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Why Us, Why Now</div>
+                <h2 class="section-title">Regional advantage meets automation expertise</h2>
+            </div>
+            <div class="team-intro">
+                <p>
+                    The Western PA / Eastern OH / Western NY corridor faces a critical shortage of skilled machinists. Average operator age exceeds 55. Shops report 6-12 month backlogs. We're building the modern alternative.
+                </p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage">
+                    <h4>Cost Structure</h4>
+                    <p>Facility and labor costs 40-50% lower than coastal markets. Same automation, better unit economics.</p>
+                </div>
+                <div class="advantage">
+                    <h4>Dense Customer Base</h4>
+                    <p>4,000+ manufacturing establishments within 150 miles. Pittsburgh is a national robotics hub.</p>
+                </div>
+                <div class="advantage">
+                    <h4>Logistics Advantage</h4>
+                    <p>Same-day ground delivery to 40% of US manufacturing GDP. Next-day to Cleveland, Buffalo, Columbus.</p>
+                </div>
+                <div class="advantage">
+                    <h4>Talent Pipeline</h4>
+                    <p>Strong technical community college programs. Deep manufacturing culture. Lower turnover than tech hubs.</p>
+                </div>
+                <div class="advantage">
+                    <h4>No Competition</h4>
+                    <p>Zero automated CNC facilities in region. Traditional shops dominate with aging owners and no succession plans.</p>
+                </div>
+                <div class="advantage">
+                    <h4>Data Moat</h4>
+                    <p>Every job generates process data. Better estimates, faster cycles, lower scrap. Compounds over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="contact-title">Let's build the future of manufacturing</h2>
+            <p class="contact-subtitle">
+                We're raising our seed round for Phase 1 deployment. Request our full deck and financial model.
+            </p>
+            <a href="mailto:founders@nextindustries.com" class="contact-email">
+                founders@nextindustries.com
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-text">© 2026 Next Industries. Precision manufacturing, reimagined.</div>
+        <div class="footer-links">
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#market">Market</a>
+            <a href="#investment">Investment</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.problem-card, .feature, .segment, .phase-card, .metric, .advantage').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Stagger animation for grid items
+        document.querySelectorAll('.problem-grid, .solution-features, .market-segments, .investment-grid, .metrics-grid, .advantages-grid').forEach(grid => {
+            const items = grid.children;
+            Array.from(items).forEach((item, index) => {
+                item.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
 </body>
 </html>
