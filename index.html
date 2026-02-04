@@ -528,7 +528,7 @@
         }
 
         .tam-display::before {
-            content: 'WEDGE TAM';
+            content: 'REGIONAL CNC MARKET';
             position: absolute;
             top: 1.5rem;
             left: 50%;
@@ -557,6 +557,16 @@
             font-size: 0.7rem;
             color: var(--text-muted);
             margin-top: 0.5rem;
+        }
+
+        /* TAM Context line */
+        .tam-context {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            letter-spacing: 0.05em;
         }
 
         .market-segments {
@@ -596,6 +606,97 @@
             height: 100%;
             background: var(--accent);
             transition: width 0.6s ease;
+        }
+
+        /* Market Share Targets */
+        .market-targets {
+            grid-column: 1 / -1;
+            margin-top: 2.5rem;
+            padding: 2rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+        }
+
+        .target-header {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .target-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .target-row:last-child {
+            border-bottom: none;
+        }
+
+        .target-year {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .target-share {
+            position: relative;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            padding-left: 0;
+        }
+
+        /* Visual bar behind the share percentage */
+        .target-share::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 4px;
+            background: var(--accent);
+            opacity: 0.4;
+            border-radius: 2px;
+        }
+
+        .target-row:nth-child(2) .target-share::before {
+            width: 30px;
+        }
+
+        .target-row:nth-child(3) .target-share::before {
+            width: 90px;
+        }
+
+        .target-row:nth-child(4) .target-share::before {
+            width: 180px;
+        }
+
+        .target-share span {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-primary);
+            padding-right: 0.5rem;
+        }
+
+        .target-revenue {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-align: right;
+        }
+
+        /* Hover effect for target rows */
+        .target-row:hover {
+            background: var(--bg-secondary);
+            margin: 0 -1rem;
+            padding: 0.85rem 1rem;
+            transition: all 0.2s ease;
         }
 
         /* Investment Section */
@@ -869,6 +970,10 @@
             .advantages-grid {
                 grid-template-columns: 1fr;
             }
+
+            .market-targets {
+                grid-column: 1;
+            }
         }
 
         @media (max-width: 768px) {
@@ -896,6 +1001,25 @@
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
+            }
+
+            .market-targets {
+                margin-top: 2rem;
+                padding: 1.5rem;
+            }
+
+            .target-row {
+                grid-template-columns: 60px 1fr 80px;
+                gap: 1rem;
+                padding: 0.6rem 0;
+            }
+
+            .target-share {
+                font-size: 0.85rem;
+            }
+
+            .target-revenue {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1049,72 +1173,72 @@
         </div>
     </section>
 
-   <section class="market" id="market">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Market Opportunity</div>
-            <h2 class="section-title">Underserved industrial corridor</h2>
+    <section class="market" id="market">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Market Opportunity</div>
+                <h2 class="section-title">Underserved industrial corridor</h2>
+            </div>
+            <div class="market-content">
+                <div class="tam-display">
+                    <div class="tam-value">$500M+</div>
+                    <div class="tam-label">Regional CNC Market</div>
+                    <div class="tam-sublabel">Western PA • Eastern OH • Western NY</div>
+                    <div class="tam-context">2,900+ manufacturers within 150 miles</div>
+                </div>
+                <div class="market-segments">
+                    <div class="segment">
+                        <div class="segment-value">$216M</div>
+                        <div class="segment-name">Fabricated Metal Manufacturers</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 43%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$98M</div>
+                        <div class="segment-name">Machinery & Equipment OEMs</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 19%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$84M</div>
+                        <div class="segment-name">Automotive Tier 2/3</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 17%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$45M</div>
+                        <div class="segment-name">Defense Contractors</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 9%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$21M</div>
+                        <div class="segment-name">Energy & Industrial</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 4%"></div></div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-value">$43M</div>
+                        <div class="segment-name">Medical, Robotics, Aerospace, R&D</div>
+                        <div class="segment-bar"><div class="segment-bar-fill" style="width: 8%"></div></div>
+                    </div>
+                </div>
+                <div class="market-targets">
+                    <div class="target-header">Market Share Targets</div>
+                    <div class="target-row">
+                        <span class="target-year">Year 1</span>
+                        <span class="target-share"><span>0.5%</span></span>
+                        <span class="target-revenue">→ $2.5M</span>
+                    </div>
+                    <div class="target-row">
+                        <span class="target-year">Year 2</span>
+                        <span class="target-share"><span>1.5%</span></span>
+                        <span class="target-revenue">→ $7.5M</span>
+                    </div>
+                    <div class="target-row">
+                        <span class="target-year">Year 3</span>
+                        <span class="target-share"><span>3%</span></span>
+                        <span class="target-revenue">→ $15M</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="market-content">
-            <div class="tam-display">
-                <div class="tam-value">$500M+</div>
-                <div class="tam-label">Regional CNC Market</div>
-                <div class="tam-sublabel">Western PA • Eastern OH • Western NY</div>
-                <div class="tam-context">2,900+ manufacturers within 150 miles</div>
-            </div>
-            <div class="market-segments">
-                <div class="segment">
-                    <div class="segment-value">$216M</div>
-                    <div class="segment-name">Fabricated Metal Manufacturers</div>
-                    <div class="segment-bar"><div class="segment-bar-fill" style="width: 43%"></div></div>
-                </div>
-                <div class="segment">
-                    <div class="segment-value">$98M</div>
-                    <div class="segment-name">Machinery & Equipment OEMs</div>
-                    <div class="segment-bar"><div class="segment-bar-fill" style="width: 19%"></div></div>
-                </div>
-                <div class="segment">
-                    <div class="segment-value">$84M</div>
-                    <div class="segment-name">Automotive Tier 2/3</div>
-                    <div class="segment-bar"><div class="segment-bar-fill" style="width: 17%"></div></div>
-                </div>
-                <div class="segment">
-                    <div class="segment-value">$45M</div>
-                    <div class="segment-name">Defense Contractors</div>
-                    <div class="segment-bar"><div class="segment-bar-fill" style="width: 9%"></div></div>
-                </div>
-                <div class="segment">
-                    <div class="segment-value">$21M</div>
-                    <div class="segment-name">Energy & Industrial</div>
-                    <div class="segment-bar"><div class="segment-bar-fill" style="width: 4%"></div></div>
-                </div>
-                <div class="segment">
-                    <div class="segment-value">$43M</div>
-                    <div class="segment-name">Medical, Robotics, Aerospace, R&D</div>
-                    <div class="segment-bar"><div class="segment-bar-fill" style="width: 8%"></div></div>
-                </div>
-            </div>
-            <div class="market-targets">
-                <div class="target-header">Market Share Targets</div>
-                <div class="target-row">
-                    <span class="target-year">Year 1</span>
-                    <span class="target-share">0.5%</span>
-                    <span class="target-revenue">→ $2.5M</span>
-                </div>
-                <div class="target-row">
-                    <span class="target-year">Year 2</span>
-                    <span class="target-share">1.5%</span>
-                    <span class="target-revenue">→ $7.5M</span>
-                </div>
-                <div class="target-row">
-                    <span class="target-year">Year 3</span>
-                    <span class="target-share">3%</span>
-                    <span class="target-revenue">→ $15M</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="investment" id="investment">
         <div class="container">
@@ -1266,7 +1390,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.problem-card, .feature, .segment, .phase-card, .metric, .advantage').forEach(el => {
+        document.querySelectorAll('.problem-card, .feature, .segment, .phase-card, .metric, .advantage, .target-row').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -1274,7 +1398,7 @@
         });
 
         // Stagger animation for grid items
-        document.querySelectorAll('.problem-grid, .solution-features, .market-segments, .investment-grid, .metrics-grid, .advantages-grid').forEach(grid => {
+        document.querySelectorAll('.problem-grid, .solution-features, .market-segments, .investment-grid, .metrics-grid, .advantages-grid, .market-targets').forEach(grid => {
             const items = grid.children;
             Array.from(items).forEach((item, index) => {
                 item.style.transitionDelay = `${index * 0.1}s`;
