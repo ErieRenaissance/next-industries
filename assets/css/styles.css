@@ -5,12 +5,23 @@
     --bg-tertiary: #1a1a1a;
     --text-primary: #f5f5f5;
     --text-secondary: #a0a0a0;
-    --text-muted: #666666;
+
+    /* Slightly lighter muted improves legibility on dark backgrounds */
+    --text-muted: #7a7a7a;
+
     --accent: #00ff88;
     --accent-dim: #00cc6a;
     --accent-glow: rgba(0, 255, 136, 0.15);
     --border: #2a2a2a;
     --grid-line: rgba(255, 255, 255, 0.03);
+
+    /* Legibility floor for “micro” text (replaces 0.55–0.75rem usage) */
+    --fs-xs: clamp(0.78rem, 0.25vw + 0.72rem, 0.88rem);
+    --fs-sm: clamp(0.88rem, 0.25vw + 0.82rem, 0.98rem);
+    --fs-base: clamp(1.00rem, 0.25vw + 0.95rem, 1.08rem);
+
+    /* Slightly tighter tracking for small uppercase labels */
+    --trk-med: 0.12em;
 }
 
 * {
@@ -29,6 +40,23 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    font-size: var(--fs-base);
+    text-rendering: optimizeLegibility;
+}
+
+/* Controlled wrapping for content text only (prevents layout surprises) */
+.hero-description,
+.solution-text p,
+.feature-content p,
+.team-intro p,
+.advantage p,
+.contact-subtitle,
+.tam-context,
+.phase-details,
+.phase-details li,
+.problem-card p {
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 /* Grid Background */
@@ -94,9 +122,9 @@ nav {
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: var(--trk-med);
     transition: color 0.3s ease;
 }
 
@@ -139,9 +167,9 @@ section {
     background: var(--accent-glow);
     border: 1px solid var(--accent-dim);
     border-radius: 2px;
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: var(--trk-med);
     color: var(--accent);
     margin-bottom: 2rem;
     animation: fadeInUp 0.8s ease-out;
@@ -196,7 +224,7 @@ section {
     gap: 0.75rem;
     padding: 1rem 2rem;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-decoration: none;
@@ -279,7 +307,7 @@ section {
 
 .coord-lines span {
     position: absolute;
-    font-size: 0.6rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
 }
 
@@ -345,9 +373,9 @@ section {
 }
 
 .stat-label {
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: var(--trk-med);
     color: var(--text-muted);
 }
 
@@ -363,9 +391,9 @@ section {
 }
 
 .section-label {
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     color: var(--accent);
     margin-bottom: 1.5rem;
     display: flex;
@@ -418,7 +446,7 @@ section {
 }
 
 .problem-card h3 {
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-secondary);
@@ -525,9 +553,9 @@ section {
     top: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.6rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     color: var(--text-muted);
 }
 
@@ -546,14 +574,14 @@ section {
 }
 
 .tam-sublabel {
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
     margin-top: 0.5rem;
 }
 
 /* TAM Context line */
 .tam-context {
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
     margin-top: 1rem;
     padding-top: 1rem;
@@ -575,7 +603,10 @@ section {
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 52px;
+
+    /* IMPORTANT: keep the row sizing behavior but allow 2-line clamp */
+    height: 64px;
+
     background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
     border: 1px solid var(--border);
     cursor: pointer;
@@ -599,7 +630,6 @@ section {
 .pyramid-level:nth-child(7) { width: 52%; }  /* $30M  */
 .pyramid-level:nth-child(8) { width: 44%; }  /* $20M  */
 
-
 .pyramid-content {
     display: flex;
     align-items: center;
@@ -610,15 +640,22 @@ section {
 }
 
 .pyramid-label {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-secondary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
     flex: 1;
     min-width: 0;
+
+    /* Fix wrapping bottleneck: allow readable wrap with clamp */
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.15;
 }
 
 .pyramid-value {
@@ -629,7 +666,7 @@ section {
 }
 
 .pyramid-percent {
-    font-size: 1rem;
+    font-size: var(--fs-xs);
     color: var(--accent);
     white-space: nowrap;
     min-width: 45px;
@@ -638,68 +675,67 @@ section {
 
 /* Pyramid Tooltip */
 .pyramid-tooltip {
-  position: absolute;
-  bottom: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(5px);
-  background: var(--bg-primary);
-  border: 1px solid var(--accent-dim);
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
-  z-index: 20;
-  pointer-events: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: var(--bg-primary);
+    border: 1px solid var(--accent-dim);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 20;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .pyramid-tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-top-color: var(--accent-dim);
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--accent-dim);
 }
 
 .pyramid-level:hover .pyramid-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
-/* NEW: sector name line */
+/* sector name line */
 .pyramid-tooltip .tooltip-sector {
-  display: block;
-  color: var(--text-muted);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
+    display: block;
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
 }
 
 .pyramid-tooltip .tooltip-value {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1rem;
 }
 
 .pyramid-tooltip .tooltip-detail {
-  color: var(--text-primary);
-  margin-left: 0.5rem;
+    color: var(--text-primary);
+    margin-left: 0.5rem;
 }
 
 .pyramid-tooltip .tooltip-context {
-  display: block;
-  color: var(--text-muted);
-  margin-top: 0.35rem;
-  font-size: 0.65rem;
+    display: block;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+    font-size: var(--fs-xs);
 }
-
 
 /* Pyramid total label */
 .pyramid-total {
@@ -736,7 +772,7 @@ section {
 }
 
 .target-header {
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--text-muted);
@@ -836,16 +872,16 @@ section {
     right: -2rem;
     background: var(--accent);
     color: var(--bg-primary);
-    font-size: 0.55rem;
+    font-size: 0.72rem;
     padding: 0.25rem 2.5rem;
     transform: rotate(45deg);
     letter-spacing: 0.1em;
 }
 
 .phase-label {
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: var(--trk-med);
     color: var(--text-muted);
     margin-bottom: 0.5rem;
 }
@@ -909,7 +945,7 @@ section {
 }
 
 .metric-label {
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-muted);
@@ -917,7 +953,7 @@ section {
 }
 
 .metric-context {
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     color: var(--text-secondary);
     margin-top: 0.5rem;
 }
@@ -1010,7 +1046,7 @@ footer {
 }
 
 .footer-text {
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
 }
 
@@ -1020,7 +1056,7 @@ footer {
 }
 
 .footer-links a {
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.3s ease;
@@ -1085,8 +1121,9 @@ footer {
         grid-column: 1;
     }
 
+    /* Keep pyramid readable on tablet */
     .pyramid-label {
-        font-size: 0.6rem;
+        font-size: var(--fs-xs);
     }
 
     .pyramid-value {
@@ -1142,7 +1179,7 @@ footer {
 
     /* Pyramid mobile adjustments */
     .pyramid-level {
-        height: 44px;
+        height: 58px;
     }
 
     .pyramid-content {
@@ -1151,7 +1188,8 @@ footer {
     }
 
     .pyramid-label {
-        font-size: 0.55rem;
+        font-size: var(--fs-xs);
+        -webkit-line-clamp: 2;
     }
 
     .pyramid-value {
@@ -1159,12 +1197,12 @@ footer {
     }
 
     .pyramid-percent {
-        font-size: 0.6rem;
+        font-size: var(--fs-xs);
         min-width: 35px;
     }
 
     .pyramid-tooltip {
-        font-size: 0.6rem;
+        font-size: var(--fs-xs);
         padding: 0.5rem 0.75rem;
     }
 }
