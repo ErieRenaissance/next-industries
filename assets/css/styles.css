@@ -730,6 +730,8 @@ section {
     padding: 2rem;
     background: var(--bg-primary);
     border: 1px solid var(--border);
+    max-width: 600px;
+    width: 100%;
 }
 
 .target-header {
