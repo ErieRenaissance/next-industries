@@ -638,56 +638,68 @@ section {
 
 /* Pyramid Tooltip */
 .pyramid-tooltip {
-    position: absolute;
-    bottom: calc(100% + 12px);
-    left: 50%;
-    transform: translateX(-50%) translateY(5px);
-    background: var(--bg-primary);
-    border: 1px solid var(--accent-dim);
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease;
-    z-index: 20;
-    pointer-events: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: var(--bg-primary);
+  border: 1px solid var(--accent-dim);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .pyramid-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: var(--accent-dim);
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--accent-dim);
 }
 
 .pyramid-level:hover .pyramid-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* NEW: sector name line */
+.pyramid-tooltip .tooltip-sector {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
 }
 
 .pyramid-tooltip .tooltip-value {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .pyramid-tooltip .tooltip-detail {
-    color: var(--text-primary);
-    margin-left: 0.5rem;
+  color: var(--text-primary);
+  margin-left: 0.5rem;
 }
 
 .pyramid-tooltip .tooltip-context {
-    display: block;
-    color: var(--text-muted);
-    margin-top: 0.35rem;
-    font-size: 0.65rem;
+  display: block;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  font-size: 0.65rem;
 }
+
 
 /* Pyramid total label */
 .pyramid-total {
