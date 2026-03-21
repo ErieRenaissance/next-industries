@@ -181,13 +181,37 @@
             </div>
 
             <div class="market-content">
-                <div class="tam-display">
-                    <div class="tam-value">$4.6B</div>
-                    <div class="tam-label">CNC Market Within 600 Miles</div>
-                    <div class="tam-sublabel">12-Hour Drive Radius from Erie, PA</div>
-                    <div class="tam-context">~25,850 companies across 8 key industrial segments</div>
+                <!-- Left column: TAM display + Revenue targets stacked vertically -->
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div class="tam-display">
+                        <div class="tam-value">$4.6B</div>
+                        <div class="tam-label">CNC Market Within 600 Miles</div>
+                        <div class="tam-sublabel">12-Hour Drive Radius from Erie, PA</div>
+                        <div class="tam-context">~25,850 companies across 8 key industrial segments</div>
+                    </div>
+
+                    <div class="market-targets" style="grid-column: auto; margin: 0; max-width: none; width: 100%;">
+                        <div class="target-header">Revenue Targets by Phase</div>
+
+                        <div class="target-row">
+                            <span class="target-year">Phase 2</span>
+                            <span class="target-share"><span>Yr 1</span></span>
+                            <span class="target-revenue">→ $2MM</span>
+                        </div>
+                        <div class="target-row">
+                            <span class="target-year">Phase 3</span>
+                            <span class="target-share"><span>Yr 2</span></span>
+                            <span class="target-revenue">→ $7.5MM</span>
+                        </div>
+                        <div class="target-row">
+                            <span class="target-year">Phase 4</span>
+                            <span class="target-share"><span>Yr 3+</span></span>
+                            <span class="target-revenue">→ $40MM+</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Right column: Pyramid -->
                 <div class="market-pyramid">
                     <div class="pyramid-level">
                         <div class="pyramid-content">
@@ -293,27 +317,6 @@
                         </div>
                     </div>
                 </div>
-
-           </div>
-
-            <div class="market-targets">
-                <div class="target-header">Revenue Targets by Phase</div>
-
-                <div class="target-row">
-                    <span class="target-year">Phase 2</span>
-                    <span class="target-share"><span>Yr 1</span></span>
-                    <span class="target-revenue">→ $2MM</span>
-                </div>
-                <div class="target-row">
-                    <span class="target-year">Phase 3</span>
-                    <span class="target-share"><span>Yr 2</span></span>
-                    <span class="target-revenue">→ $7.5MM</span>
-                </div>
-                <div class="target-row">
-                    <span class="target-year">Phase 4</span>
-                    <span class="target-share"><span>Yr 3+</span></span>
-                    <span class="target-revenue">→ $40MM+</span>
-                </div>
             </div>
         </div>
     </section>
@@ -325,7 +328,7 @@
                 <h2 class="section-title">Phased deployment with clear milestones</h2>
             </div>
 
-            <div class="investment-grid">
+            <div class="investment-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="phase-card featured">
                     <div class="phase-label">Phase 1 — Capabilities Buildout</div>
                     <ul class="phase-details">
@@ -360,16 +363,49 @@
                 <div class="phase-card">
                     <div class="phase-label">Phase 4 — Growth</div>
                     <ul class="phase-details">
-                        <li>Fully autonomous facility.</li>
-                        <li>Ongoing data collection & process refinements</li>
-                        <li>No human interventions in production.</li>
-                        <li>Continuous, around-the-clock production & operations.</li>
+                        <li>Fully autonomous facility</li>
+                        <li>Ongoing data collection and process refinements</li>
+                        <li>No human interventions in production</li>
+                        <li>Continuous, around-the-clock production and operations</li>
                         <li>$40MM+ revenue target</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="metrics">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Business Model</div>
+                <h2 class="section-title">Target unit economics</h2>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">$20K</div>
+                    <div class="metric-label">Avg Order Value</div>
+                    <div class="metric-context">HMLV segment</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">40-70%</div>
+                    <div class="metric-label">HMLV Gross Margin</div>
+                    <div class="metric-context">High-mix, low-volume</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">30-50%</div>
+                    <div class="metric-label">LMHV Gross Margin</div>
+                    <div class="metric-context">Low-mix, high-volume</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">60%</div>
+                    <div class="metric-label">Target Blended</div>
+                    <div class="metric-context">Gross margin at scale</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="team" id="team">
         <div class="container">
             <div class="section-header">
