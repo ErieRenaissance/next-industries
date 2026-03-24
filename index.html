@@ -1,440 +1,482 @@
 <!-- FILE: index.html -->
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Industries | Automated Precision Manufacturing</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+```
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- Layout overrides for 4-phase grid and market column stacking -->
+<style>
+    /* Desktop: 4 phase cards in one row */
+    .investment-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    /* Left column in market section: stack TAM + revenue targets */
+    .market-left-col {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    /* Revenue targets: override base CSS centering/spanning */
+    .market-left-col .market-targets {
+        grid-column: auto;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+    }
+
+    /* Tablet: 2x2 grid for phases, market stacks to single column */
+    @media (max-width: 1024px) {
+        .investment-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+    /* Phone: single column everything */
+    @media (max-width: 768px) {
+        .investment-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="grid-bg"></div>
     <div class="noise-overlay"></div>
 
-    <nav>
-        <div class="logo">Next<span>.</span>Industries</div>
-        <div class="nav-links">
-            <a href="#problem">Problem</a>
-            <a href="#solution">Solution</a>
-            <a href="#market">Market</a>
-            <a href="#investment">Investment</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+```
+<nav>
+    <div class="logo">Next<span>.</span>Industries</div>
+    <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#market">Market</a>
+        <a href="#investment">Investment</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>The future of American precision <em>machining</em></h1>
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>The future of American precision <em>machining</em></h1>
 
-                    <p class="hero-description">
-                        Parts in 48 hours, not 4-8 weeks.
-                    </p>
-                    <p class="hero-description">
-                        We're building a fully autonomous CNC factory, purpose-built to supply the next generation of American industrialists. Get your parts in 48 hours or less.
-                    </p>
-                    <p class="hero-description">
-                        We're on a mission to make it <em>exactly</em> that easy.
-                    </p>
+                <p class="hero-description">
+                    Parts in 48 hours, not 4-8 weeks.
+                </p>
+                <p class="hero-description">
+                    We're building a fully autonomous CNC factory, purpose-built to supply the next generation of American industrialists. Get your parts in 48 hours or less.
+                </p>
+                <p class="hero-description">
+                    We're on a mission to make it <em>exactly</em> that easy.
+                </p>
 
-                    <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">
-                            Request Deck
-                            <span>→</span>
-                        </a>
-                        <a href="#solution" class="btn btn-secondary">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="machine-diagram">
-                        <div class="coord-lines">
-                            <span class="x">X-AXIS</span>
-                            <span class="y">Y-AXIS</span>
-                            <span class="z">Z: 0.0001"</span>
-                        </div>
-                        <div class="crosshair"></div>
-                    </div>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        Request Deck
+                        <span>→</span>
+                    </a>
+                    <a href="#solution" class="btn btn-secondary">
+                        Learn More
+                    </a>
                 </div>
             </div>
 
-            <div class="stats-bar">
-                <div class="stat">
-                    <div class="stat-value">48<span>-</span>hour</div>
-                    <div class="stat-label">Standard Lead Time</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">±0.001<span>"</span></div>
-                    <div class="stat-label">Precision Tolerance</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">&lt;1<span>%</span></div>
-                    <div class="stat-label">Target Defect Rate</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">95<span>%</span></div>
-                    <div class="stat-label">Production Activities Automated</div>
+            <div class="hero-visual">
+                <div class="machine-diagram">
+                    <div class="coord-lines">
+                        <span class="x">X-AXIS</span>
+                        <span class="y">Y-AXIS</span>
+                        <span class="z">Z: 0.0001"</span>
+                    </div>
+                    <div class="crosshair"></div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="problem" id="problem">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">The Problem</div>
-                <h2 class="section-title">America's production capacity has been hollowed out</h2>
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">48<span>-</span>hour</div>
+                <div class="stat-label">Standard Lead Time</div>
             </div>
-
-            <div class="problem-grid">
-                <div class="problem-card" data-num="01">
-                    <h3>Local Job Shops</h3>
-                    <p>4-8 week lead times and growing backlogs. Aging workforce, phone and fax quoting. No digital thread or visibility. Owners eyeing retirement with no succession plans. One shop closing every 34 hours through 2036.</p>
-                </div>
-                <div class="problem-card" data-num="02">
-                    <h3>Online Marketplaces</h3>
-                    <p>Routed to the same overloaded regional shops. Quality variance with no production control. Marketplace margin stacked on top of shop costs. No true traceability.</p>
-                </div>
-                <div class="problem-card" data-num="03">
-                    <h3>Overseas Manufacturing</h3>
-                    <p>3-5 week ocean freight or 3-5x air shipping costs. Revision cycles measured in days. IP vulnerability and customs delays. Tariff exposure and uncertainty. Fixed capacity regardless of demand.</p>
-                </div>
-                <div class="problem-card" data-num="04">
-                    <h3>In-House Shops</h3>
-                    <p>Major CapEx to start and maintain. Competing for a shrinking talent pool. Fixed capacity regardless of demand. Doesn't scale.</p>
-                </div>
+            <div class="stat">
+                <div class="stat-value">±0.001<span>"</span></div>
+                <div class="stat-label">Precision Tolerance</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">&lt;1<span>%</span></div>
+                <div class="stat-label">Target Defect Rate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">95<span>%</span></div>
+                <div class="stat-label">Production Activities Automated</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="solution" id="solution">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Our Solution</div>
-                <h2 class="section-title">Decouple production capacity from labor</h2>
+<section class="problem" id="problem">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">The Problem</div>
+            <h2 class="section-title">America's production capacity has been hollowed out</h2>
+        </div>
+
+        <div class="problem-grid">
+            <div class="problem-card" data-num="01">
+                <h3>Local Job Shops</h3>
+                <p>4-8 week lead times and growing backlogs. Aging workforce, phone and fax quoting. No digital thread or visibility. Owners eyeing retirement with no succession plans. One shop closing every 34 hours through 2036.</p>
             </div>
-
-            <div class="solution-content">
-                <div class="solution-text">
-                    <p>
-                        Advanced manufacturing equipment is readily available: 5-axis CNC machines, industrial robotics, precision metrology systems. The problem isn't the hardware. It's that job shops operate each machine as an independent workstation requiring constant human intervention. Manual setups, isolated quality checks, and sequential workflows create constant stops and starts. The result: 4-8 week bottlenecks and inconsistent quality.
-                    </p>
-                    <p>
-                        We're building a single, autonomous machine that operates continuously from dock to door. Upload a design file, and automated process planning orchestrates the entire workflow: toolpath generation, fixture selection, and operation scheduling. Robotic systems move parts seamlessly through machining, inspection, and finishing. Closed-loop control adjusts cutting parameters in real-time based on sensor feedback. Every machine, robot, and sensor synchronized for continuous lights-out production. Complete digital traceability from raw stock to certified delivery.
-                    </p>
-                </div>
-
-                <div class="solution-features">
-                    <div class="feature">
-                        <div class="feature-icon">◎</div>
-                        <div class="feature-content">
-                            <h4>Instant Quoting</h4>
-                            <p>Upload your STEP file, receive a price in seconds. Algorithmic pricing by material, machine time, and inspection.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">⬡</div>
-                        <div class="feature-content">
-                            <h4>Automated Process Planning</h4>
-                            <p>DFM checks, toolpath generation, collision simulation, G-code posted to machine control. No human bottlenecks.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">◈</div>
-                        <div class="feature-content">
-                            <h4>Lights-Out Production</h4>
-                            <p>Robotic load/unload, automated stock retrieval, AMR transport. Real-time spindle, vibration, and tool wear monitoring. 24/7.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">⬢</div>
-                        <div class="feature-content">
-                            <h4>Integrated Inspection</h4>
-                            <p>CMM, vision, and surface measurement. Every dimension checked against the digital model. Certificate of conformance auto-generated.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">◇</div>
-                        <div class="feature-content">
-                            <h4>Complete Digital Thread</h4>
-                            <p>Full traceability from design to shipped part. Every action and measurement recorded. Actuals feed back into process models.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="problem-card" data-num="02">
+                <h3>Online Marketplaces</h3>
+                <p>Routed to the same overloaded regional shops. Quality variance with no production control. Marketplace margin stacked on top of shop costs. No true traceability.</p>
+            </div>
+            <div class="problem-card" data-num="03">
+                <h3>Overseas Manufacturing</h3>
+                <p>3-5 week ocean freight or 3-5x air shipping costs. Revision cycles measured in days. IP vulnerability and customs delays. Tariff exposure and uncertainty. Fixed capacity regardless of demand.</p>
+            </div>
+            <div class="problem-card" data-num="04">
+                <h3>In-House Shops</h3>
+                <p>Major CapEx to start and maintain. Competing for a shrinking talent pool. Fixed capacity regardless of demand. Doesn't scale.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="market" id="market">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Market Opportunity</div>
-                <h2 class="section-title">Massive underserved industrial corridor</h2>
-            </div>
-
-            <div class="market-content">
-                <!-- Left column: TAM display + Revenue targets stacked vertically -->
-                <div style="display: flex; flex-direction: column; gap: 2rem;">
-                    <div class="tam-display">
-                        <div class="tam-value">$4.6B</div>
-                        <div class="tam-label">CNC Market Within 600 Miles</div>
-                        <div class="tam-sublabel">12-Hour Drive Radius from Erie, PA</div>
-                        <div class="tam-context">~25,850 companies across 8 key industrial segments</div>
-                    </div>
-
-                    <div class="market-targets" style="grid-column: auto; margin: 0; max-width: none; width: 100%;">
-                        <div class="target-header">Revenue Targets by Phase</div>
-
-                        <div class="target-row">
-                            <span class="target-year">Phase 2</span>
-                            <span class="target-share"><span>Yr 1</span></span>
-                            <span class="target-revenue">→ $2MM</span>
-                        </div>
-                        <div class="target-row">
-                            <span class="target-year">Phase 3</span>
-                            <span class="target-share"><span>Yr 2</span></span>
-                            <span class="target-revenue">→ $7.5MM</span>
-                        </div>
-                        <div class="target-row">
-                            <span class="target-year">Phase 4</span>
-                            <span class="target-share"><span>Yr 3+</span></span>
-                            <span class="target-revenue">→ $40MM+</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right column: Pyramid -->
-                <div class="market-pyramid">
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Fabricated Metal Manufacturers</span>
-                            <span class="pyramid-value">$1.8B</span>
-                            <span class="pyramid-percent">39%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Fabricated Metal Manufacturers</span>
-                            <span class="tooltip-value">$1.8B</span><span class="tooltip-detail">&bull; 8,800 companies</span>
-                            <span class="tooltip-context">39% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Machinery &amp; Equipment OEMs</span>
-                            <span class="pyramid-value">$780M</span>
-                            <span class="pyramid-percent">17%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Machinery &amp; Equipment OEMs</span>
-                            <span class="tooltip-value">$780M</span><span class="tooltip-detail">&bull; 4,500 companies</span>
-                            <span class="tooltip-context">17% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Automotive Tier 2/3</span>
-                            <span class="pyramid-value">$620M</span>
-                            <span class="pyramid-percent">13%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Automotive Tier 2/3</span>
-                            <span class="tooltip-value">$620M</span><span class="tooltip-detail">&bull; 3,500 companies</span>
-                            <span class="tooltip-context">13% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Defense Contractors</span>
-                            <span class="pyramid-value">$510M</span>
-                            <span class="pyramid-percent">11%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Defense Contractors</span>
-                            <span class="tooltip-value">$510M</span><span class="tooltip-detail">&bull; 2,200 companies</span>
-                            <span class="tooltip-context">11% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Plastics &amp; Polymers</span>
-                            <span class="pyramid-value">$350M</span>
-                            <span class="pyramid-percent">8%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Plastics &amp; Polymers</span>
-                            <span class="tooltip-value">$350M</span><span class="tooltip-detail">&bull; 2,100 companies</span>
-                            <span class="tooltip-context">8% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Medical, Robotics, Aerospace, R&amp;D</span>
-                            <span class="pyramid-value">$310M</span>
-                            <span class="pyramid-percent">7%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Medical, Robotics, Aerospace, R&amp;D</span>
-                            <span class="tooltip-value">$310M</span><span class="tooltip-detail">&bull; 1,900 companies</span>
-                            <span class="tooltip-context">7% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Energy &amp; Industrial</span>
-                            <span class="pyramid-value">$130M</span>
-                            <span class="pyramid-percent">3%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Energy &amp; Industrial</span>
-                            <span class="tooltip-value">$130M</span><span class="tooltip-detail">&bull; 650 companies</span>
-                            <span class="tooltip-context">3% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-
-                    <div class="pyramid-level">
-                        <div class="pyramid-content">
-                            <span class="pyramid-label">Other Industrial</span>
-                            <span class="pyramid-value">$85M</span>
-                            <span class="pyramid-percent">2%</span>
-                        </div>
-                        <div class="pyramid-tooltip">
-                            <span class="tooltip-sector">Other Industrial</span>
-                            <span class="tooltip-value">$85M</span><span class="tooltip-detail">&bull; 2,200 companies</span>
-                            <span class="tooltip-context">2% of $4.6B regional CNC market</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="solution" id="solution">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Our Solution</div>
+            <h2 class="section-title">Decouple production capacity from labor</h2>
         </div>
-    </section>
 
-    <section class="investment" id="investment">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Capital Plan</div>
-                <h2 class="section-title">Phased deployment with clear milestones</h2>
-            </div>
-
-            <div class="investment-grid" style="grid-template-columns: repeat(4, 1fr);">
-                <div class="phase-card featured">
-                    <div class="phase-label">Phase 1 — Capabilities Buildout</div>
-                    <ul class="phase-details">
-                        <li>Single production cell buildout and validation</li>
-                        <li>Full manufacturing lifecycle executed autonomously</li>
-                        <li>5-axis machining center</li>
-                        <li>Robotic load/unload, AMR transport, full metrology suite</li>
-                        <li>No human intervention in the production path demonstrated</li>
-                    </ul>
-                </div>
-
-                <div class="phase-card">
-                    <div class="phase-label">Phase 2 — Production Year 1</div>
-                    <ul class="phase-details">
-                        <li>Partially supervised production operations</li>
-                        <li>Real-world production data collection</li>
-                        <li>Machine learning and robotic process refinements</li>
-                        <li>$2MM revenue target</li>
-                    </ul>
-                </div>
-
-                <div class="phase-card">
-                    <div class="phase-label">Phase 3 — Expanded Capabilities</div>
-                    <ul class="phase-details">
-                        <li>Additional machines and production capacity</li>
-                        <li>Unattended overnight runs</li>
-                        <li>Human labor decoupled from production</li>
-                        <li>$7.5MM revenue target</li>
-                    </ul>
-                </div>
-
-                <div class="phase-card">
-                    <div class="phase-label">Phase 4 — Growth</div>
-                    <ul class="phase-details">
-                        <li>Fully autonomous facility</li>
-                        <li>Ongoing data collection and process refinements</li>
-                        <li>No human interventions in production</li>
-                        <li>Continuous, around-the-clock production and operations</li>
-                        <li>$40MM+ revenue target</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <section class="team" id="team">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Why Now</div>
-                <h2 class="section-title">Five structural forces converging at once</h2>
-            </div>
-
-            <div class="team-intro">
+        <div class="solution-content">
+            <div class="solution-text">
                 <p>
-                    A reshoring mandate is driving demand to rebuild domestic production capacity. Skilled machinists are retiring faster than replacements emerge, with no near-term workforce solution. Meanwhile, automation economics have crossed the threshold, AI now enables the orchestration layer, and a wave of retiring operators is forcing billions in orphaned production capacity into consolidation.
+                    Advanced manufacturing equipment is readily available: 5-axis CNC machines, industrial robotics, precision metrology systems. The problem isn't the hardware. It's that job shops operate each machine as an independent workstation requiring constant human intervention. Manual setups, isolated quality checks, and sequential workflows create constant stops and starts. The result: 4-8 week bottlenecks and inconsistent quality.
+                </p>
+                <p>
+                    We're building a single, autonomous machine that operates continuously from dock to door. Upload a design file, and automated process planning orchestrates the entire workflow: toolpath generation, fixture selection, and operation scheduling. Robotic systems move parts seamlessly through machining, inspection, and finishing. Closed-loop control adjusts cutting parameters in real-time based on sensor feedback. Every machine, robot, and sensor synchronized for continuous lights-out production. Complete digital traceability from raw stock to certified delivery.
                 </p>
             </div>
 
-            <div class="advantages-grid">
-                <div class="advantage">
-                    <h4>Speed</h4>
-                    <p>Automated, closed-loop production targets sub-48-hour end-to-end execution instead of multi-week handoffs.</p>
+            <div class="solution-features">
+                <div class="feature">
+                    <div class="feature-icon">◎</div>
+                    <div class="feature-content">
+                        <h4>Instant Quoting</h4>
+                        <p>Upload your STEP file, receive a price in seconds. Algorithmic pricing by material, machine time, and inspection.</p>
+                    </div>
                 </div>
-                <div class="advantage">
-                    <h4>Scale</h4>
-                    <p>Capacity scales through autonomous cells and orchestration, not by adding machinists one-for-one.</p>
+                <div class="feature">
+                    <div class="feature-icon">⬡</div>
+                    <div class="feature-content">
+                        <h4>Automated Process Planning</h4>
+                        <p>DFM checks, toolpath generation, collision simulation, G-code posted to machine control. No human bottlenecks.</p>
+                    </div>
                 </div>
-                <div class="advantage">
-                    <h4>Quality</h4>
-                    <p>An integrated production system manages machining, inspection, routing, and records in a single digital thread.</p>
+                <div class="feature">
+                    <div class="feature-icon">◈</div>
+                    <div class="feature-content">
+                        <h4>Lights-Out Production</h4>
+                        <p>Robotic load/unload, automated stock retrieval, AMR transport. Real-time spindle, vibration, and tool wear monitoring. 24/7.</p>
+                    </div>
                 </div>
-                <div class="advantage">
-                    <h4>Economics</h4>
-                    <p>Cutting lead time, overhead, and rework reduces total production cost beyond the unit price. Costs scale with facilities, not jobs.</p>
+                <div class="feature">
+                    <div class="feature-icon">⬢</div>
+                    <div class="feature-content">
+                        <h4>Integrated Inspection</h4>
+                        <p>CMM, vision, and surface measurement. Every dimension checked against the digital model. Certificate of conformance auto-generated.</p>
+                    </div>
                 </div>
-                <div class="advantage">
-                    <h4>Incumbents Can't Retrofit</h4>
-                    <p>You can't automate a shop built around human judgment without dismantling the business currently paying the bills.</p>
+                <div class="feature">
+                    <div class="feature-icon">◇</div>
+                    <div class="feature-content">
+                        <h4>Complete Digital Thread</h4>
+                        <p>Full traceability from design to shipped part. Every action and measurement recorded. Actuals feed back into process models.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="contact-title">Let's build the future of manufacturing</h2>
-            <p class="contact-subtitle">
-                We're raising a $5M seed round for Phase 1 deployment. Request our full deck and financial model.
+<section class="market" id="market">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Market Opportunity</div>
+            <h2 class="section-title">Massive underserved industrial corridor</h2>
+        </div>
+
+        <div class="market-content">
+            <!-- Left column: TAM display + Revenue targets stacked vertically -->
+            <div class="market-left-col">
+                <div class="tam-display">
+                    <div class="tam-value">$4.6B</div>
+                    <div class="tam-label">CNC Market Within 600 Miles</div>
+                    <div class="tam-sublabel">12-Hour Drive Radius from Erie, PA</div>
+                    <div class="tam-context">~25,850 companies across 8 key industrial segments</div>
+                </div>
+
+                <div class="market-targets">
+                    <div class="target-header">Revenue Targets by Phase</div>
+
+                    <div class="target-row">
+                        <span class="target-year">Phase 2</span>
+                        <span class="target-share"><span>Yr 1</span></span>
+                        <span class="target-revenue">→ $2MM</span>
+                    </div>
+                    <div class="target-row">
+                        <span class="target-year">Phase 3</span>
+                        <span class="target-share"><span>Yr 2</span></span>
+                        <span class="target-revenue">→ $7.5MM</span>
+                    </div>
+                    <div class="target-row">
+                        <span class="target-year">Phase 4</span>
+                        <span class="target-share"><span>Yr 3+</span></span>
+                        <span class="target-revenue">→ $40MM+</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right column: Pyramid -->
+            <div class="market-pyramid">
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Fabricated Metal Manufacturers</span>
+                        <span class="pyramid-value">$1.8B</span>
+                        <span class="pyramid-percent">39%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Fabricated Metal Manufacturers</span>
+                        <span class="tooltip-value">$1.8B</span><span class="tooltip-detail">&bull; 8,800 companies</span>
+                        <span class="tooltip-context">39% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Machinery &amp; Equipment OEMs</span>
+                        <span class="pyramid-value">$780M</span>
+                        <span class="pyramid-percent">17%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Machinery &amp; Equipment OEMs</span>
+                        <span class="tooltip-value">$780M</span><span class="tooltip-detail">&bull; 4,500 companies</span>
+                        <span class="tooltip-context">17% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Automotive Tier 2/3</span>
+                        <span class="pyramid-value">$620M</span>
+                        <span class="pyramid-percent">13%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Automotive Tier 2/3</span>
+                        <span class="tooltip-value">$620M</span><span class="tooltip-detail">&bull; 3,500 companies</span>
+                        <span class="tooltip-context">13% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Defense Contractors</span>
+                        <span class="pyramid-value">$510M</span>
+                        <span class="pyramid-percent">11%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Defense Contractors</span>
+                        <span class="tooltip-value">$510M</span><span class="tooltip-detail">&bull; 2,200 companies</span>
+                        <span class="tooltip-context">11% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Plastics &amp; Polymers</span>
+                        <span class="pyramid-value">$350M</span>
+                        <span class="pyramid-percent">8%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Plastics &amp; Polymers</span>
+                        <span class="tooltip-value">$350M</span><span class="tooltip-detail">&bull; 2,100 companies</span>
+                        <span class="tooltip-context">8% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Medical, Robotics, Aerospace, R&amp;D</span>
+                        <span class="pyramid-value">$310M</span>
+                        <span class="pyramid-percent">7%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Medical, Robotics, Aerospace, R&amp;D</span>
+                        <span class="tooltip-value">$310M</span><span class="tooltip-detail">&bull; 1,900 companies</span>
+                        <span class="tooltip-context">7% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Energy &amp; Industrial</span>
+                        <span class="pyramid-value">$130M</span>
+                        <span class="pyramid-percent">3%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Energy &amp; Industrial</span>
+                        <span class="tooltip-value">$130M</span><span class="tooltip-detail">&bull; 650 companies</span>
+                        <span class="tooltip-context">3% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+
+                <div class="pyramid-level">
+                    <div class="pyramid-content">
+                        <span class="pyramid-label">Other Industrial</span>
+                        <span class="pyramid-value">$85M</span>
+                        <span class="pyramid-percent">2%</span>
+                    </div>
+                    <div class="pyramid-tooltip">
+                        <span class="tooltip-sector">Other Industrial</span>
+                        <span class="tooltip-value">$85M</span><span class="tooltip-detail">&bull; 2,200 companies</span>
+                        <span class="tooltip-context">2% of $4.6B regional CNC market</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="investment" id="investment">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Capital Plan</div>
+            <h2 class="section-title">Phased deployment with clear milestones</h2>
+        </div>
+
+        <div class="investment-grid">
+            <div class="phase-card featured">
+                <div class="phase-label">Phase 1 — Capabilities Buildout</div>
+                <ul class="phase-details">
+                    <li>Single production cell buildout and validation</li>
+                    <li>Full manufacturing lifecycle executed autonomously</li>
+                    <li>5-axis machining center</li>
+                    <li>Robotic load/unload, AMR transport, full metrology suite</li>
+                    <li>No human intervention in the production path demonstrated</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-label">Phase 2 — Production Year 1</div>
+                <ul class="phase-details">
+                    <li>Partially supervised production operations</li>
+                    <li>Real-world production data collection</li>
+                    <li>Machine learning and robotic process refinements</li>
+                    <li>$2MM revenue target</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-label">Phase 3 — Expanded Capabilities</div>
+                <ul class="phase-details">
+                    <li>Additional machines and production capacity</li>
+                    <li>Unattended overnight runs</li>
+                    <li>Human labor decoupled from production</li>
+                    <li>$7.5MM revenue target</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <div class="phase-label">Phase 4 — Growth</div>
+                <ul class="phase-details">
+                    <li>Fully autonomous facility</li>
+                    <li>Ongoing data collection and process refinements</li>
+                    <li>No human interventions in production</li>
+                    <li>Continuous, around-the-clock production and operations</li>
+                    <li>$40MM+ revenue target</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team" id="team">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Why Now</div>
+            <h2 class="section-title">Five structural forces converging at once</h2>
+        </div>
+
+        <div class="team-intro">
+            <p>
+                A reshoring mandate is driving demand to rebuild domestic production capacity. Skilled machinists are retiring faster than replacements emerge, with no near-term workforce solution. Meanwhile, automation economics have crossed the threshold, AI now enables the orchestration layer, and a wave of retiring operators is forcing billions in orphaned production capacity into consolidation.
             </p>
-            <a href="mailto:colin@next.industries" class="contact-email">
-                Contact
-                <span>→</span>
-            </a>
         </div>
-    </section>
 
-    <footer>
-        <div class="footer-text">© 2026 Next Industries. Precision manufacturing, reimagined.</div>
-        <div class="footer-links">
-            <a href="#problem">Problem</a>
-            <a href="#solution">Solution</a>
-            <a href="#market">Market</a>
-            <a href="#investment">Investment</a>
+        <div class="advantages-grid">
+            <div class="advantage">
+                <h4>Speed</h4>
+                <p>Automated, closed-loop production targets sub-48-hour end-to-end execution instead of multi-week handoffs.</p>
+            </div>
+            <div class="advantage">
+                <h4>Scale</h4>
+                <p>Capacity scales through autonomous cells and orchestration, not by adding machinists one-for-one.</p>
+            </div>
+            <div class="advantage">
+                <h4>Quality</h4>
+                <p>An integrated production system manages machining, inspection, routing, and records in a single digital thread.</p>
+            </div>
+            <div class="advantage">
+                <h4>Economics</h4>
+                <p>Cutting lead time, overhead, and rework reduces total production cost beyond the unit price. Costs scale with facilities, not jobs.</p>
+            </div>
+            <div class="advantage">
+                <h4>Incumbents Can't Retrofit</h4>
+                <p>You can't automate a shop built around human judgment without dismantling the business currently paying the bills.</p>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="assets/js/main.js"></script>
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="contact-title">Let's build the future of manufacturing</h2>
+        <p class="contact-subtitle">
+            We're raising a $5M seed round for Phase 1 deployment. Request our full deck and financial model.
+        </p>
+        <a href="mailto:colin@next.industries" class="contact-email">
+            Contact
+            <span>→</span>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-text">© 2026 Next Industries. Precision manufacturing, reimagined.</div>
+    <div class="footer-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#market">Market</a>
+        <a href="#investment">Investment</a>
+    </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+```
+
 </body>
 </html>
