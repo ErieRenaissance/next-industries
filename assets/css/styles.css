@@ -589,6 +589,20 @@ section {
     letter-spacing: 0.05em;
 }
 
+/* Market left column: stack TAM + revenue targets */
+.market-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.market-left-col .market-targets {
+    grid-column: auto;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+}
+
 /* Market Pyramid */
 .market-pyramid {
     display: flex;
@@ -848,7 +862,7 @@ section {
 /* Investment Section */
 .investment-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 }
 
@@ -1106,7 +1120,7 @@ footer {
     }
 
     .investment-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .metrics-grid {
@@ -1149,6 +1163,10 @@ footer {
     }
 
     .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .investment-grid {
         grid-template-columns: 1fr;
     }
 
