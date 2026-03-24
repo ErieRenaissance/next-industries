@@ -14,40 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/css/styles.css">
-
-<!-- Layout overrides for 4-phase grid and market column stacking -->
-<style>
-    /* Desktop: 4 phase cards in one row */
-    .investment-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-    }
-    /* Left column in market section: stack TAM + revenue targets */
-    .market-left-col {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    /* Revenue targets: override base CSS centering/spanning */
-    .market-left-col .market-targets {
-        grid-column: auto;
-        margin: 0;
-        max-width: none;
-        width: 100%;
-    }
-
-    /* Tablet: 2x2 grid for phases, market stacks to single column */
-    @media (max-width: 1024px) {
-        .investment-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-        }
-    }
-    /* Phone: single column everything */
-    @media (max-width: 768px) {
-        .investment-grid {
-            grid-template-columns: 1fr !important;
-        }
-    }
-</style>
 ```
 
 </head>
