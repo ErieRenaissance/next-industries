@@ -1,448 +1,488 @@
-<!-- FILE: index.html -->
-
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Industries | Automated Precision Manufacturing</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXT Industries — Autonomous Precision Manufacturing</title>
+<meta name="description" content="A job shop closes in America every 34 hours. NEXT Industries is building the autonomous production infrastructure that replaces them. Erie, Pennsylvania.">
+<meta name="theme-color" content="#080c14">
 
-```
+<!-- Open Graph -->
+
+<meta property="og:title" content="NEXT Industries — Autonomous Precision Manufacturing">
+<meta property="og:description" content="A job shop closes in America every 34 hours. We're building what comes next.">
+<meta property="og:type" content="website">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/css/styles.css">
-```
-
 </head>
 <body>
-    <div class="grid-bg"></div>
-    <div class="noise-overlay"></div>
 
-```
-<nav>
-    <div class="logo">Next<span>.</span>Industries</div>
-    <div class="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#market">Market</a>
-        <a href="#investment">Investment</a>
-        <a href="#contact">Contact</a>
-    </div>
+<!-- ============================================================ -->
+
+<!-- STATUS MARQUEE -->
+
+<!-- ============================================================ -->
+
+<div class="status-bar" aria-label="Company status">
+  <div class="status-track">
+    <span class="status-item"><span class="status-dot"></span>SEED ROUND OPEN</span>
+    <span class="status-sep">/</span>
+    <span class="status-item">ERIE, PENNSYLVANIA</span>
+    <span class="status-sep">/</span>
+    <span class="status-item">EST. 2026</span>
+    <span class="status-sep">/</span>
+    <span class="status-item">SERVING WESTERN PA · EASTERN OH · WESTERN NY</span>
+    <span class="status-sep">/</span>
+    <span class="status-item"><span class="status-dot amber"></span>NEXT CLOSURE IN <span id="closure-counter" aria-live="polite">33:59:59</span></span>
+    <span class="status-sep">/</span>
+    <!-- duplicate for seamless scroll -->
+    <span class="status-item"><span class="status-dot"></span>SEED ROUND OPEN</span>
+    <span class="status-sep">/</span>
+    <span class="status-item">ERIE, PENNSYLVANIA</span>
+    <span class="status-sep">/</span>
+    <span class="status-item">EST. 2026</span>
+    <span class="status-sep">/</span>
+    <span class="status-item">SERVING WESTERN PA · EASTERN OH · WESTERN NY</span>
+    <span class="status-sep">/</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+
+<!-- NAVIGATION -->
+
+<!-- ============================================================ -->
+
+<nav class="nav">
+  <a href="#top" class="brand" aria-label="NEXT Industries home">
+    <span class="brand-mark">NEXT</span>
+    <span class="brand-sub">Industries</span>
+  </a>
+  <div class="nav-links">
+    <a href="#thesis">Thesis</a>
+    <a href="#convergence">Convergence</a>
+    <a href="#replacement">Replacement</a>
+    <a href="#founder">Founder</a>
+  </div>
+  <a href="mailto:colin@next.industries?subject=NEXT%20Industries%20%E2%80%94%20Investor%20inquiry" class="nav-cta">
+    Request the deck <span aria-hidden="true">→</span>
+  </a>
 </nav>
 
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>The future of American precision <em>machining</em></h1>
+<!-- ============================================================ -->
 
-                <p class="hero-description">
-                    Parts in 48 hours, not 4-8 weeks.
-                </p>
-                <p class="hero-description">
-                    We're building a fully autonomous CNC factory, purpose-built to supply the next generation of American industrialists. Get your parts in 48 hours or less.
-                </p>
-                <p class="hero-description">
-                    We're on a mission to make it <em>exactly</em> that easy.
-                </p>
+<!-- HERO -->
 
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">
-                        Request Deck
-                        <span>→</span>
-                    </a>
-                    <a href="#solution" class="btn btn-secondary">
-                        Learn More
-                    </a>
-                </div>
-            </div>
+<!-- ============================================================ -->
 
-            <div class="hero-visual">
-                <div class="machine-diagram">
-                    <div class="coord-lines">
-                        <span class="x">X-AXIS</span>
-                        <span class="y">Y-AXIS</span>
-                        <span class="z">Z: 0.0001"</span>
-                    </div>
-                    <div class="crosshair"></div>
-                </div>
-            </div>
-        </div>
+<section class="hero" id="top">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-crosshairs" aria-hidden="true">
+    <span class="ch ch-tl">+</span>
+    <span class="ch ch-tr">+</span>
+    <span class="ch ch-bl">+</span>
+    <span class="ch ch-br">+</span>
+  </div>
 
-        <div class="stats-bar">
-            <div class="stat">
-                <div class="stat-value">48<span>-</span>hour</div>
-                <div class="stat-label">Standard Lead Time</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">±0.001<span>"</span></div>
-                <div class="stat-label">Precision Tolerance</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">&lt;1<span>%</span></div>
-                <div class="stat-label">Target Defect Rate</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">95<span>%</span></div>
-                <div class="stat-label">Production Activities Automated</div>
-            </div>
-        </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      <span>AMERICAN MANUFACTURING THESIS &nbsp;·&nbsp; 04.2026</span>
     </div>
+
+```
+<h1 class="hero-headline">
+  <span class="h-line h-line-1">1 job&#8209;shop closes</span>
+  <span class="h-line h-line-2"><em>every 34&nbsp;hours</em></span>
+  <span class="h-line h-line-3">in America.</span>
+</h1>
+
+<div class="hero-rule" aria-hidden="true"></div>
+
+<p class="hero-deck">
+  NEXT Industries is building the autonomous precision manufacturing
+  infrastructure that <strong>replaces America's closing job shops</strong>
+  &mdash; before their capacity disappears overseas. Files in.
+  Finished parts out.
+</p>
+
+<div class="hero-actions">
+  <a href="mailto:colin@next.industries?subject=NEXT%20Industries%20%E2%80%94%20Investor%20inquiry" class="btn btn-primary">
+    <span>Request the deck</span>
+    <span class="btn-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="#thesis" class="btn btn-ghost">
+    <span>Read the thesis</span>
+  </a>
+</div>
+
+<div class="hero-meta">
+  <div class="hm-col">
+    <div class="hm-label">Stage</div>
+    <div class="hm-value">Seed</div>
+  </div>
+  <div class="hm-col">
+    <div class="hm-label">HQ</div>
+    <div class="hm-value">Erie, PA</div>
+  </div>
+  <div class="hm-col">
+    <div class="hm-label">Founded</div>
+    <div class="hm-value">2026</div>
+  </div>
+  <div class="hm-col">
+    <div class="hm-label">Focus</div>
+    <div class="hm-value">Autonomous&nbsp;CNC</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>SCROLL</span>
+    <span class="hs-line"></span>
+  </div>
 </section>
 
-<section class="problem" id="problem">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">The Problem</div>
-            <h2 class="section-title">America's production capacity has been hollowed out</h2>
-        </div>
+<!-- ============================================================ -->
 
-        <div class="problem-grid">
-            <div class="problem-card" data-num="01">
-                <h3>Local Job Shops</h3>
-                <p>4-8 week lead times and growing backlogs. Aging workforce, phone and fax quoting. No digital thread or visibility. Owners eyeing retirement with no succession plans. One shop closing every 34 hours through 2036.</p>
-            </div>
-            <div class="problem-card" data-num="02">
-                <h3>Online Marketplaces</h3>
-                <p>Routed to the same overloaded regional shops. Quality variance with no production control. Marketplace margin stacked on top of shop costs. No true traceability.</p>
-            </div>
-            <div class="problem-card" data-num="03">
-                <h3>Overseas Manufacturing</h3>
-                <p>3-5 week ocean freight or 3-5x air shipping costs. Revision cycles measured in days. IP vulnerability and customs delays. Tariff exposure and uncertainty. Fixed capacity regardless of demand.</p>
-            </div>
-            <div class="problem-card" data-num="04">
-                <h3>In-House Shops</h3>
-                <p>Major CapEx to start and maintain. Competing for a shrinking talent pool. Fixed capacity regardless of demand. Doesn't scale.</p>
-            </div>
-        </div>
+<!-- 01 — THE COLLAPSE -->
+
+<!-- ============================================================ -->
+
+<section class="section section-collapse" id="thesis">
+  <div class="section-head">
+    <div class="kicker">
+      <span class="kicker-num">01</span>
+      <span class="kicker-label">The Collapse</span>
     </div>
+    <h2 class="section-title">
+      American manufacturing is losing its workforce.
+      <em>No one is replacing it.</em>
+    </h2>
+    <p class="section-lede">
+      This isn't a new problem. It didn't suddenly appear. After decades
+      of neglect, the country faces <strong>billions of dollars of orphaned
+      production capacity</strong> with no clear successor.
+    </p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-figure">1</div>
+      <div class="stat-unit">shop closing every 34&nbsp;hrs</div>
+      <div class="stat-source">2026&ndash;2036 forecast</div>
+    </div>
+    <div class="stat">
+      <div class="stat-figure">70<span class="stat-pct">%</span></div>
+      <div class="stat-unit">of shops for sale never find a buyer</div>
+      <div class="stat-source">Deloitte</div>
+    </div>
+    <div class="stat">
+      <div class="stat-figure">4</div>
+      <div class="stat-unit">workers for every 10 open roles</div>
+      <div class="stat-source">NAM</div>
+    </div>
+    <div class="stat">
+      <div class="stat-figure">75<span class="stat-pct">%</span></div>
+      <div class="stat-unit">avg machine spindle downtime in job shops</div>
+      <div class="stat-source">MachineMetrics</div>
+    </div>
+    <div class="stat">
+      <div class="stat-figure">12<span class="stat-pct">+</span></div>
+      <div class="stat-unit">weeks avg lead time for domestic precision parts</div>
+      <div class="stat-source">ThomasNet</div>
+    </div>
+  </div>
 </section>
 
-<section class="solution" id="solution">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Our Solution</div>
-            <h2 class="section-title">Decouple production capacity from labor</h2>
-        </div>
+<!-- ============================================================ -->
 
-        <div class="solution-content">
-            <div class="solution-text">
-                <p>
-                    Advanced manufacturing equipment is readily available: 5-axis CNC machines, industrial robotics, precision metrology systems. The problem isn't the hardware. It's that job shops operate each machine as an independent workstation requiring constant human intervention. Manual setups, isolated quality checks, and sequential workflows create constant stops and starts. The result: 4-8 week bottlenecks and inconsistent quality.
-                </p>
-                <p>
-                    We're building a single, autonomous machine that operates continuously from dock to door. Upload a design file, and automated process planning orchestrates the entire workflow: toolpath generation, fixture selection, and operation scheduling. Robotic systems move parts seamlessly through machining, inspection, and finishing. Closed-loop control adjusts cutting parameters in real-time based on sensor feedback. Every machine, robot, and sensor synchronized for continuous lights-out production. Complete digital traceability from raw stock to certified delivery.
-                </p>
-            </div>
+<!-- 02 — THE CONVERGENCE -->
 
-            <div class="solution-features">
-                <div class="feature">
-                    <div class="feature-icon">◎</div>
-                    <div class="feature-content">
-                        <h4>Instant Quoting</h4>
-                        <p>Upload your STEP file, receive a price in seconds. Algorithmic pricing by material, machine time, and inspection.</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⬡</div>
-                    <div class="feature-content">
-                        <h4>Automated Process Planning</h4>
-                        <p>DFM checks, toolpath generation, collision simulation, G-code posted to machine control. No human bottlenecks.</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">◈</div>
-                    <div class="feature-content">
-                        <h4>Lights-Out Production</h4>
-                        <p>Robotic load/unload, automated stock retrieval, AMR transport. Real-time spindle, vibration, and tool wear monitoring. 24/7.</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⬢</div>
-                    <div class="feature-content">
-                        <h4>Integrated Inspection</h4>
-                        <p>CMM, vision, and surface measurement. Every dimension checked against the digital model. Certificate of conformance auto-generated.</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">◇</div>
-                    <div class="feature-content">
-                        <h4>Complete Digital Thread</h4>
-                        <p>Full traceability from design to shipped part. Every action and measurement recorded. Actuals feed back into process models.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ============================================================ -->
+
+<section class="section section-forces" id="convergence">
+  <div class="section-head">
+    <div class="kicker">
+      <span class="kicker-num">02</span>
+      <span class="kicker-label">The Window</span>
     </div>
+    <h2 class="section-title">
+      Five forces are converging <em>right now</em>.
+    </h2>
+    <p class="section-lede">
+      There is a narrow window to rebuild America's production base
+      before we lose the knowledge and capacity to do so.
+    </p>
+  </div>
+
+  <div class="force-list">
+    <div class="force">
+      <div class="force-num">01</div>
+      <div class="force-body">
+        <h3 class="force-title">Reshoring mandate</h3>
+        <p>National policy and market demand are pushing to rebuild domestic production capacity. The political will exists across both parties.</p>
+      </div>
+    </div>
+    <div class="force">
+      <div class="force-num">02</div>
+      <div class="force-body">
+        <h3 class="force-title">Structural labor shortage</h3>
+        <p>Skilled machinists are retiring faster than replacements emerge. There is no near-term workforce solution.</p>
+      </div>
+    </div>
+    <div class="force">
+      <div class="force-num">03</div>
+      <div class="force-body">
+        <h3 class="force-title">Automation economics crossed the threshold</h3>
+        <p>Hardware costs and integration maturity now make commercially viable autonomous production achievable for the first time.</p>
+      </div>
+    </div>
+    <div class="force">
+      <div class="force-num">04</div>
+      <div class="force-body">
+        <h3 class="force-title">AI unlocks the orchestration layer</h3>
+        <p>AI capabilities are now advanced enough to coordinate machines, software, and workflows as one cohesive system.</p>
+      </div>
+    </div>
+    <div class="force force-emphasis">
+      <div class="force-num">05</div>
+      <div class="force-body">
+        <h3 class="force-title">Unprecedented market consolidation</h3>
+        <p>A wave of retiring shop owners is forcing billions in orphaned production to consolidate. The question isn't whether it consolidates &mdash; it's whether it consolidates into modern domestic facilities or disappears overseas.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="market" id="market">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Market Opportunity</div>
-            <h2 class="section-title">Massive underserved industrial corridor</h2>
-        </div>
+<!-- ============================================================ -->
 
-        <div class="market-content">
-            <!-- Left column: TAM display + Revenue targets stacked vertically -->
-            <div class="market-left-col">
-                <div class="tam-display">
-                    <div class="tam-value">$4.6B</div>
-                    <div class="tam-label">CNC Market Within 600 Miles</div>
-                    <div class="tam-sublabel">12-Hour Drive Radius from Erie, PA</div>
-                    <div class="tam-context">~25,850 companies across 8 key industrial segments</div>
-                </div>
+<!-- 03 — THE REPLACEMENT -->
 
-                <div class="market-targets">
-                    <div class="target-header">Revenue Targets by Phase</div>
+<!-- ============================================================ -->
 
-                    <div class="target-row">
-                        <span class="target-year">Phase 2</span>
-                        <span class="target-share"><span>Yr 1</span></span>
-                        <span class="target-revenue">→ $2MM</span>
-                    </div>
-                    <div class="target-row">
-                        <span class="target-year">Phase 3</span>
-                        <span class="target-share"><span>Yr 2</span></span>
-                        <span class="target-revenue">→ $7.5MM</span>
-                    </div>
-                    <div class="target-row">
-                        <span class="target-year">Phase 4</span>
-                        <span class="target-share"><span>Yr 3+</span></span>
-                        <span class="target-revenue">→ $40MM+</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right column: Pyramid -->
-            <div class="market-pyramid">
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Fabricated Metal Manufacturers</span>
-                        <span class="pyramid-value">$1.8B</span>
-                        <span class="pyramid-percent">39%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Fabricated Metal Manufacturers</span>
-                        <span class="tooltip-value">$1.8B</span><span class="tooltip-detail">&bull; 8,800 companies</span>
-                        <span class="tooltip-context">39% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Machinery &amp; Equipment OEMs</span>
-                        <span class="pyramid-value">$780M</span>
-                        <span class="pyramid-percent">17%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Machinery &amp; Equipment OEMs</span>
-                        <span class="tooltip-value">$780M</span><span class="tooltip-detail">&bull; 4,500 companies</span>
-                        <span class="tooltip-context">17% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Automotive Tier 2/3</span>
-                        <span class="pyramid-value">$620M</span>
-                        <span class="pyramid-percent">13%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Automotive Tier 2/3</span>
-                        <span class="tooltip-value">$620M</span><span class="tooltip-detail">&bull; 3,500 companies</span>
-                        <span class="tooltip-context">13% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Defense Contractors</span>
-                        <span class="pyramid-value">$510M</span>
-                        <span class="pyramid-percent">11%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Defense Contractors</span>
-                        <span class="tooltip-value">$510M</span><span class="tooltip-detail">&bull; 2,200 companies</span>
-                        <span class="tooltip-context">11% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Plastics &amp; Polymers</span>
-                        <span class="pyramid-value">$350M</span>
-                        <span class="pyramid-percent">8%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Plastics &amp; Polymers</span>
-                        <span class="tooltip-value">$350M</span><span class="tooltip-detail">&bull; 2,100 companies</span>
-                        <span class="tooltip-context">8% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Medical, Robotics, Aerospace, R&amp;D</span>
-                        <span class="pyramid-value">$310M</span>
-                        <span class="pyramid-percent">7%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Medical, Robotics, Aerospace, R&amp;D</span>
-                        <span class="tooltip-value">$310M</span><span class="tooltip-detail">&bull; 1,900 companies</span>
-                        <span class="tooltip-context">7% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Energy &amp; Industrial</span>
-                        <span class="pyramid-value">$130M</span>
-                        <span class="pyramid-percent">3%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Energy &amp; Industrial</span>
-                        <span class="tooltip-value">$130M</span><span class="tooltip-detail">&bull; 650 companies</span>
-                        <span class="tooltip-context">3% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-
-                <div class="pyramid-level">
-                    <div class="pyramid-content">
-                        <span class="pyramid-label">Other Industrial</span>
-                        <span class="pyramid-value">$85M</span>
-                        <span class="pyramid-percent">2%</span>
-                    </div>
-                    <div class="pyramid-tooltip">
-                        <span class="tooltip-sector">Other Industrial</span>
-                        <span class="tooltip-value">$85M</span><span class="tooltip-detail">&bull; 2,200 companies</span>
-                        <span class="tooltip-context">2% of $4.6B regional CNC market</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="section section-replacement" id="replacement">
+  <div class="section-head">
+    <div class="kicker">
+      <span class="kicker-num">03</span>
+      <span class="kicker-label">The Replacement</span>
     </div>
+    <h2 class="section-title">
+      A single autonomous production system.
+      <em>Files in. Finished parts out.</em>
+    </h2>
+    <p class="section-lede">
+      The job shop that's closing was built around human judgment at every
+      step. What replaces it is built around <strong>orchestration, not
+      headcount</strong>.
+    </p>
+  </div>
+
+  <div class="replace-split">
+    <div class="replace-card replace-old">
+      <div class="rc-label">THE SHOP THAT'S CLOSING</div>
+      <div class="rc-headline">
+        <span class="rc-num">4&#8209;8</span>
+        <span class="rc-unit">WEEKS</span>
+      </div>
+      <p class="rc-deck">End-to-end production lifecycle with dozens of human touchpoints spanning multiple weeks.</p>
+      <ul class="rc-list rc-list-neg">
+        <li>Phone &amp; fax quoting</li>
+        <li>Weeks-long delays</li>
+        <li>No digital thread</li>
+        <li>Human intervention at every step</li>
+      </ul>
+    </div>
+
+```
+<div class="replace-arrow" aria-hidden="true">
+  <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2"/>
+    <polyline points="96,8 112,20 96,32" stroke="currentColor" stroke-width="2" fill="none"/>
+  </svg>
+</div>
+
+<div class="replace-card replace-new">
+  <div class="rc-label">WHAT REPLACES IT <span class="rc-brand">NEXT&nbsp;INDUSTRIES</span></div>
+  <div class="rc-headline">
+    <span class="rc-num">&lt;48</span>
+    <span class="rc-unit">HOURS</span>
+  </div>
+  <p class="rc-deck">End-to-end production lifecycle with no human intervention in the production path.</p>
+  <ul class="rc-list rc-list-pos">
+    <li>Instant algorithmic quoting</li>
+    <li>Autonomous machining &amp; inspection</li>
+    <li>Complete digital thread</li>
+    <li>Machine-executed, fully traceable</li>
+  </ul>
+</div>
+```
+
+  </div>
 </section>
 
-<section class="investment" id="investment">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Capital Plan</div>
-            <h2 class="section-title">Phased deployment with clear milestones</h2>
-        </div>
+<!-- ============================================================ -->
 
-        <div class="investment-grid">
-            <div class="phase-card featured">
-                <div class="phase-label">Phase 1 — Capabilities Buildout</div>
-                <ul class="phase-details">
-                    <li>Single production cell buildout and validation</li>
-                    <li>Full manufacturing lifecycle executed autonomously</li>
-                    <li>5-axis machining center</li>
-                    <li>Robotic load/unload, AMR transport, full metrology suite</li>
-                    <li>No human intervention in the production path demonstrated</li>
-                </ul>
-            </div>
+<!-- 04 — FOUNDER -->
 
-            <div class="phase-card">
-                <div class="phase-label">Phase 2 — Production Year 1</div>
-                <ul class="phase-details">
-                    <li>Partially supervised production operations</li>
-                    <li>Real-world production data collection</li>
-                    <li>Machine learning and robotic process refinements</li>
-                    <li>$2MM revenue target</li>
-                </ul>
-            </div>
+<!-- ============================================================ -->
 
-            <div class="phase-card">
-                <div class="phase-label">Phase 3 — Expanded Capabilities</div>
-                <ul class="phase-details">
-                    <li>Additional machines and production capacity</li>
-                    <li>Unattended overnight runs</li>
-                    <li>Human labor decoupled from production</li>
-                    <li>$7.5MM revenue target</li>
-                </ul>
-            </div>
-
-            <div class="phase-card">
-                <div class="phase-label">Phase 4 — Growth</div>
-                <ul class="phase-details">
-                    <li>Fully autonomous facility</li>
-                    <li>Ongoing data collection and process refinements</li>
-                    <li>No human interventions in production</li>
-                    <li>Continuous, around-the-clock production and operations</li>
-                    <li>$40MM+ revenue target</li>
-                </ul>
-            </div>
-        </div>
+<section class="section section-team" id="founder">
+  <div class="section-head">
+    <div class="kicker">
+      <span class="kicker-num">04</span>
+      <span class="kicker-label">Founder</span>
     </div>
+    <h2 class="section-title">
+      Built on the shop floor.
+      <em>Not in a pitch meeting.</em>
+    </h2>
+    <p class="section-lede">
+      This problem has been visible to people inside the industry for
+      twenty years. The reason it hasn't been solved isn't technical
+      difficulty &mdash; it's that the people who understood it weren't
+      the ones building software companies.
+    </p>
+  </div>
+
+  <div class="team-card">
+    <div class="tc-meta">
+      <div class="tc-name">Colin Russ</div>
+      <div class="tc-role">CEO &amp; Founder</div>
+    </div>
+    <div class="tc-body">
+      <div class="tc-pillar">
+        <div class="tcp-label">SHOP-FLOOR TO EXECUTIVE LEADERSHIP</div>
+        <p>15 years driving operations, technology, and growth for startups, public companies, and consultancies, built on a foundational background in hands-on machining, metal fabrication, and systems.</p>
+      </div>
+      <div class="tc-pillar">
+        <div class="tcp-label">HANDS-ON SYSTEMS &amp; AUTOMATION</div>
+        <p>Deep expertise not just designing, but actively implementing lean manufacturing, automation, ERP, and control systems on the front lines.</p>
+      </div>
+      <div class="tc-pillar">
+        <div class="tcp-label">CROSS-SECTOR OPERATOR</div>
+        <p>Proven track record spanning energy, industrial, and enterprise software markets, combining high-level strategy with hands-on operational execution.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="team" id="team">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Why Now</div>
-            <h2 class="section-title">Five structural forces converging at once</h2>
-        </div>
+<!-- ============================================================ -->
 
-        <div class="team-intro">
-            <p>
-                A reshoring mandate is driving demand to rebuild domestic production capacity. Skilled machinists are retiring faster than replacements emerge, with no near-term workforce solution. Meanwhile, automation economics have crossed the threshold, AI now enables the orchestration layer, and a wave of retiring operators is forcing billions in orphaned production capacity into consolidation.
-            </p>
-        </div>
+<!-- 05 — RAISING / CTA -->
 
-        <div class="advantages-grid">
-            <div class="advantage">
-                <h4>Speed</h4>
-                <p>Automated, closed-loop production targets sub-48-hour end-to-end execution instead of multi-week handoffs.</p>
-            </div>
-            <div class="advantage">
-                <h4>Scale</h4>
-                <p>Capacity scales through autonomous cells and orchestration, not by adding machinists one-for-one.</p>
-            </div>
-            <div class="advantage">
-                <h4>Quality</h4>
-                <p>An integrated production system manages machining, inspection, routing, and records in a single digital thread.</p>
-            </div>
-            <div class="advantage">
-                <h4>Economics</h4>
-                <p>Cutting lead time, overhead, and rework reduces total production cost beyond the unit price. Costs scale with facilities, not jobs.</p>
-            </div>
-            <div class="advantage">
-                <h4>Incumbents Can't Retrofit</h4>
-                <p>You can't automate a shop built around human judgment without dismantling the business currently paying the bills.</p>
-            </div>
-        </div>
+<!-- ============================================================ -->
+
+<section class="section section-raising" id="raising">
+  <div class="raising-inner">
+    <div class="kicker raising-kicker">
+      <span class="kicker-num">05</span>
+      <span class="kicker-label">Currently Raising</span>
     </div>
+
+```
+<h2 class="raising-title">
+  The full thesis is <em>not</em> on the internet.
+</h2>
+
+<p class="raising-deck">
+  We're sharing our technical roadmap, financial model, and complete
+  strategic thesis with qualified investors building conviction in the
+  future of American precision manufacturing.
+</p>
+
+<a href="mailto:colin@next.industries?subject=NEXT%20Industries%20%E2%80%94%20Investor%20inquiry" class="btn btn-primary btn-lg">
+  <span>Request the deck</span>
+  <span class="btn-arrow" aria-hidden="true">→</span>
+</a>
+```
+
+  </div>
 </section>
 
-<section class="contact" id="contact">
-    <div class="container">
-        <h2 class="contact-title">Let's build the future of manufacturing</h2>
-        <p class="contact-subtitle">
-            We're raising a $5M seed round for Phase 1 deployment. Request our full deck and financial model.
-        </p>
-        <a href="mailto:colin@next.industries" class="contact-email">
-            Contact
-            <span>→</span>
-        </a>
+<!-- ============================================================ -->
+
+<!-- CLOSE -->
+
+<!-- ============================================================ -->
+
+<section class="section section-close" id="contact">
+  <div class="close-inner">
+    <div class="close-mark">
+      <span>NEXT</span>
+      <small>Industries</small>
     </div>
+
+```
+<h2 class="close-headline">
+  A machine shop closes <em>every 34 hours</em>.<br>
+  The production has to go somewhere.<br>
+  <strong>Let's build where it goes.</strong>
+</h2>
+
+<div class="close-contact">
+  <a href="mailto:colin@next.industries" class="cc-row">
+    <span class="cc-label">EMAIL</span>
+    <span class="cc-value">colin@next.industries</span>
+    <span class="cc-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="https://x.com/thaaatColin" class="cc-row">
+    <span class="cc-label">X</span>
+    <span class="cc-value">@thaaatColin</span>
+    <span class="cc-arrow" aria-hidden="true">→</span>
+  </a>
+  <a href="tel:+17135601617" class="cc-row">
+    <span class="cc-label">PHONE</span>
+    <span class="cc-value">713.560.1617</span>
+    <span class="cc-arrow" aria-hidden="true">→</span>
+  </a>
+</div>
+
+<div class="close-window">
+  The window to build the next generation of American manufacturing is open.
+  <span>What we create today will define the future.</span>
+</div>
+```
+
+  </div>
 </section>
 
-<footer>
-    <div class="footer-text">© 2026 Next Industries. Precision manufacturing, reimagined.</div>
-    <div class="footer-links">
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#market">Market</a>
-        <a href="#investment">Investment</a>
+<!-- ============================================================ -->
+
+<!-- FOOTER -->
+
+<!-- ============================================================ -->
+
+<footer class="footer">
+  <div class="ft-left">
+    <div class="ft-brand">NEXT&nbsp;<span>Industries</span></div>
+    <div class="ft-tag">Autonomous precision manufacturing infrastructure.</div>
+  </div>
+  <div class="ft-right">
+    <div class="ft-row">
+      <span>Erie, PA</span>
+      <span class="ft-sep">·</span>
+      <span>EST. 2026</span>
+      <span class="ft-sep">·</span>
+      <span>&copy; 2026 NEXT Industries</span>
     </div>
+    <div class="ft-nav">
+      <a href="#thesis">Thesis</a>
+      <a href="#convergence">Convergence</a>
+      <a href="#replacement">Replacement</a>
+      <a href="#founder">Founder</a>
+      <a href="#raising">Raising</a>
+    </div>
+  </div>
 </footer>
 
 <script src="assets/js/main.js"></script>
-```
 
 </body>
 </html>
