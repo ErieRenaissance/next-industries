@@ -192,8 +192,6 @@ em { font-style: italic; font-weight: inherit; }
 .hero {
   padding: clamp(80px, 12vh, 160px) 0 clamp(80px, 14vh, 180px);
   position: relative;
-  /* Shared hero headline font size. The deck reuses it (below) so the
-     two text blocks share the exact same left and right margins. */
   --hl-fs: clamp(34px, 3.4vw + 14px, 58px);
 }
 .hero-headline {
@@ -203,7 +201,7 @@ em { font-style: italic; font-weight: inherit; }
   letter-spacing: -0.025em;
   color: var(--white);
   margin-bottom: 18px;
-  max-width: 72ch;
+  max-width: 120ch;
 }
 .hero-note {
   font-size: var(--t-sm);
@@ -213,6 +211,7 @@ em { font-style: italic; font-weight: inherit; }
   color: var(--ink-4);
   margin-top: -14px;
   margin-bottom: 18px;
+   max-width: 120ch;
 }
 .hero-tagline {
   font-size: var(--t-xl);
@@ -226,7 +225,7 @@ em { font-style: italic; font-weight: inherit; }
   line-height: 1.6;
   color: var(--ink-2);
   max-width: calc(12 * var(--hl-fs));
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   font-weight: 400;
 }
 .hero-actions {
