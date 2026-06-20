@@ -314,7 +314,7 @@ em { font-style: italic; font-weight: inherit; }
 .stat {
   /* 3 cards per row at a narrower fixed width. flex-grow is 0 so the 2 cards
      on the final row keep this width and center (justify-content). */
-  flex: 0 1 250px;
+  flex: 0 1 275px;
   background: var(--teal);
   color: var(--navy);
   padding: 14px 14px;
@@ -329,6 +329,7 @@ em { font-style: italic; font-weight: inherit; }
 .stat-num {
   font-size: clamp(56px, 5vw + 24px, 88px);
   font-weight: 800;
+   justify-content: center;
   line-height: 1.0;
   letter-spacing: -0.04em;
   color: var(--navy);
