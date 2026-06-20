@@ -202,12 +202,8 @@ em { font-style: italic; font-weight: inherit; }
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--white);
-  margin-bottom: 28px;
-  /* 12em measure wraps the headline to exactly two lines:
-     "1 job-shop closes every" / "10 hours in America."
-     Using em keeps that break identical at every screen size, and the
-     smaller font leaves wider margins on the right. */
-  max-width: 12em;
+  margin-bottom: 18px;
+  max-width: 72ch;
 }
 .hero-note {
   font-size: var(--t-sm);
@@ -216,21 +212,19 @@ em { font-style: italic; font-weight: inherit; }
   text-transform: uppercase;
   color: var(--ink-4);
   margin-top: -14px;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 .hero-tagline {
   font-size: var(--t-xl);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--teal);
-  margin-bottom: 36px;
+  margin-bottom: 18px;
 }
 .hero-deck {
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  /* Same measure as .hero-headline (12 x --hl-fs) so the deck aligns
-     with the headline right-hand margin. */
   max-width: calc(12 * var(--hl-fs));
   margin-bottom: 24px;
   font-weight: 400;
