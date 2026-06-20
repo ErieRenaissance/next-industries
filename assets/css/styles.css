@@ -276,8 +276,8 @@ em { font-style: italic; font-weight: inherit; }
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--white);
-  margin-bottom: 24px;
-  max-width: 36ch;
+  margin-bottom: 12px;
+  max-width: 52ch;
 }
 .section-title em {
   font-weight: 400;
@@ -308,10 +308,10 @@ em { font-style: italic; font-weight: inherit; }
 .stat {
   /* 3 cards per row at a narrower fixed width. flex-grow is 0 so the 2 cards
      on the final row keep this width and center (justify-content). */
-  flex: 0 1 300px;
+  flex: 0 1 250px;
   background: var(--teal);
   color: var(--navy);
-  padding: 28px 24px;
+  padding: 14px 14px;
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
@@ -341,7 +341,7 @@ em { font-style: italic; font-weight: inherit; }
   font-weight: 600;
   line-height: 1.35;
   color: var(--navy);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   max-width: 22ch;
 }
 .stat-source {
