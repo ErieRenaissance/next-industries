@@ -192,15 +192,22 @@ em { font-style: italic; font-weight: inherit; }
 .hero {
   padding: clamp(80px, 12vh, 160px) 0 clamp(80px, 14vh, 180px);
   position: relative;
+  /* Shared hero headline font size. The deck reuses it (below) so the
+     two text blocks share the exact same left and right margins. */
+  --hl-fs: clamp(34px, 3.4vw + 14px, 58px);
 }
 .hero-headline {
-  font-size: var(--t-4xl);
+  font-size: var(--hl-fs);
   font-weight: 800;
-  line-height: 1.0;
+  line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--white);
   margin-bottom: 28px;
-  max-width: 18ch;
+  /* 12em measure wraps the headline to exactly two lines:
+     "1 job-shop closes every" / "10 hours in America."
+     Using em keeps that break identical at every screen size, and the
+     smaller font leaves wider margins on the right. */
+  max-width: 12em;
 }
 .hero-note {
   font-size: var(--t-sm);
@@ -222,7 +229,9 @@ em { font-style: italic; font-weight: inherit; }
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 60ch;
+  /* Same measure as .hero-headline (12 x --hl-fs) so the deck aligns
+     with the headline right-hand margin. */
+  max-width: calc(12 * var(--hl-fs));
   margin-bottom: 44px;
   font-weight: 400;
 }
@@ -295,11 +304,15 @@ em { font-style: italic; font-weight: inherit; }
    Four tiles across on desktop.
    ================================================================ */
 .stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
 }
 .stat {
+  /* 3 cards per row. 32px = the two 16px column gaps. flex-grow is 0 so the
+     2 cards on the final row keep card width and center (justify-content). */
+  flex: 0 1 calc((100% - 32px) / 3);
   background: var(--teal);
   color: var(--navy);
   padding: 28px 24px;
@@ -652,7 +665,7 @@ em { font-style: italic; font-weight: inherit; }
    RESPONSIVE
    ================================================================ */
 @media (max-width: 1100px) {
-  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat { flex-basis: calc((100% - 16px) / 2); }
 }
 
 @media (max-width: 900px) {
@@ -673,8 +686,6 @@ em { font-style: italic; font-weight: inherit; }
 
 @media (max-width: 640px) {
   :root { --gutter: 20px; }
-
-  .stat-grid { grid-template-columns: 1fr 1fr; }
 
   .force { grid-template-columns: 44px 1fr; gap: 16px; padding: 20px 22px; }
   .force-circle { width: 36px; height: 36px; font-size: 14px; }
