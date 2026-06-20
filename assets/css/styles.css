@@ -275,13 +275,15 @@ em { font-style: italic; font-weight: inherit; }
   font-weight: 700;
 }
 .section-title {
-  font-size: var(--t-2xl);
+  /* Capped smaller than --t-2xl (was up to 52px) so the longest heading
+     fits on one full-width line instead of leaving a wide gap on the right. */
+  font-size: clamp(34px, 3vw + 16px, 46px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--white);
   margin-bottom: 24px;
-  max-width: 24ch;
+  max-width: 36ch;
 }
 .section-title em {
   font-weight: 400;
@@ -292,7 +294,7 @@ em { font-style: italic; font-weight: inherit; }
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 64ch;
+  max-width: 90ch;
 }
 .section-lede em {
   font-style: italic;
@@ -310,9 +312,9 @@ em { font-style: italic; font-weight: inherit; }
   gap: 16px;
 }
 .stat {
-  /* 3 cards per row. 32px = the two 16px column gaps. flex-grow is 0 so the
-     2 cards on the final row keep card width and center (justify-content). */
-  flex: 0 1 calc((100% - 32px) / 3);
+  /* 3 cards per row at a narrower fixed width. flex-grow is 0 so the 2 cards
+     on the final row keep this width and center (justify-content). */
+  flex: 0 1 300px;
   background: var(--teal);
   color: var(--navy);
   padding: 28px 24px;
