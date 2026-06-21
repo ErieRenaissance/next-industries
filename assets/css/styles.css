@@ -211,7 +211,7 @@ em { font-style: italic; font-weight: inherit; }
   color: var(--ink-4);
   margin-top: -14px;
   margin-bottom: 18px;
-   max-width: 120ch;
+   max-width: 90ch;
 }
 .hero-tagline {
   font-size: var(--t-xl);
@@ -224,7 +224,7 @@ em { font-style: italic; font-weight: inherit; }
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 120ch;
+  max-width: 85ch;
   margin-bottom: 18px;
   font-weight: 400;
 }
