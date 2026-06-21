@@ -211,7 +211,7 @@ em { font-style: italic; font-weight: inherit; }
   color: var(--ink-4);
   margin-top: -14px;
   margin-bottom: 18px;
-  max-width: 90ch;
+  max-width: 100ch;
 }
 .hero-tagline {
   font-size: var(--t-xl);
@@ -219,7 +219,7 @@ em { font-style: italic; font-weight: inherit; }
   letter-spacing: -0.01em;
   color: var(--teal);
   margin-bottom: 18px;
-  max-width: 90ch;
+  max-width: 100ch;
 }
 .hero-deck {
   font-size: var(--t-md);
@@ -249,7 +249,7 @@ em { font-style: italic; font-weight: inherit; }
 
 .section-head {
   margin-bottom: clamp(48px, 6vw, 72px);
-  max-width: 90ch;
+  max-width: 100ch;
 }
 .kicker {
   display: inline-flex;
@@ -277,7 +277,7 @@ em { font-style: italic; font-weight: inherit; }
   letter-spacing: -0.02em;
   color: var(--white);
   margin-bottom: 14px;
-  max-width: 90ch;
+  max-width: 100ch;
 }
 .section-title em {
   font-weight: 400;
@@ -288,7 +288,7 @@ em { font-style: italic; font-weight: inherit; }
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 90ch;
+  max-width: 100ch;
 }
 .section-lede em {
   font-style: italic;
