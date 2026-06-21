@@ -225,7 +225,7 @@ em { font-style: italic; font-weight: inherit; }
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 85ch;
+  max-width: 90ch;
   margin-bottom: 18px;
   font-weight: 400;
 }
@@ -277,7 +277,7 @@ em { font-style: italic; font-weight: inherit; }
   letter-spacing: -0.02em;
   color: var(--white);
   margin-bottom: 14px;
-  max-width: 72ch;
+  max-width: 90ch;
 }
 .section-title em {
   font-weight: 400;
@@ -288,7 +288,7 @@ em { font-style: italic; font-weight: inherit; }
   font-size: var(--t-md);
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 120ch;
+  max-width: 90ch;
 }
 .section-lede em {
   font-style: italic;
