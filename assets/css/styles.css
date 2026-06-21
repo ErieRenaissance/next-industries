@@ -343,7 +343,8 @@ em { font-style: italic; font-weight: inherit; }
   line-height: 1.35;
   color: var(--navy);
   margin-bottom: 14px;
-  display:center;
+  display: flex;
+  align-items: flex-start;
   max-width: 22ch;
 }
 .stat-source {
@@ -351,7 +352,8 @@ em { font-style: italic; font-weight: inherit; }
   font-weight: 500;
   color: var(--navy);
   opacity: 0.7;
-  display:center;
+  display: flex;
+  align-items: flex-start;
   margin-top: auto;
 }
 .stat-source em {
