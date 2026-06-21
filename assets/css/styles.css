@@ -219,6 +219,7 @@ em { font-style: italic; font-weight: inherit; }
   letter-spacing: -0.01em;
   color: var(--teal);
   margin-bottom: 18px;
+  max-width: 90ch;
 }
 .hero-deck {
   font-size: var(--t-md);
@@ -556,7 +557,7 @@ em { font-style: italic; font-weight: inherit; }
   border-top: 1px solid var(--line);
 }
 .section-close .container {
-  max-width: 760px;
+  max-width: 900px;
 }
 .close-mark {
   display: inline-flex;
